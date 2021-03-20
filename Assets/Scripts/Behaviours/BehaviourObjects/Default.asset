@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23415ea6b3c5902439c1697b75f4be99, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
-  behaviours:
+  Behaviours:
   - {fileID: 11400000, guid: 68924d235dd08ae4aa29efe39c362268, type: 2}
   - {fileID: 11400000, guid: f0ff54e5454205f4384c7f29fd07ad38, type: 2}
   - {fileID: 11400000, guid: 528b8a69c3cb7f744b2bbfca510deeee, type: 2}
-  weights:
+  Weights:
   - 4
   - 1
   - 2
