@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class FlockAgent : MonoBehaviour
 {
+    public Flock AgentFlock { get; set; }
     public Collider AgentCollider { get; set; }
 
     void Start()
