@@ -7,23 +7,23 @@ public class AvoidanceBehaviour : FlockBehaviour
 {
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-        if(context.Count == 0)
+        if (context.Count == 0)
             return Vector3.zero;
 
         Vector3 avoidanceMove = Vector3.zero;
         int nThingsToAvoid = 0;
         foreach (Transform item in context)
         {
-            if(Vector3.SqrMagnitude(item.position - agent.transform.position) < flock.SquareAvoidanceRadius)
+            if (Vector3.SqrMagnitude(item.position - agent.transform.position) < flock.SquareAvoidanceRadius)
             {
                 nThingsToAvoid++;
                 avoidanceMove += agent.transform.position - item.position;
             }
         }
 
-        if(nThingsToAvoid > 0)
+        if (nThingsToAvoid > 0)
             avoidanceMove /= nThingsToAvoid;
-        
+
         return avoidanceMove;
     }
 }

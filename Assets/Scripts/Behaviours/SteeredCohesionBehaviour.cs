@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Flock Behaviour/Cohesion")]
-public class CohesionBehaviour : FlockBehaviour
+[CreateAssetMenu(menuName = "Flock Behaviour/Steered Cohesion")]
+public class SteeredCohesionBehaviour : FlockBehaviour
 {
+    private Vector3 currentVelocity;
+    [SerializeField] private float agentSmoothTime = 0.5f;
+
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
         if (context.Count == 0)
@@ -18,7 +21,9 @@ public class CohesionBehaviour : FlockBehaviour
 
         cohesionMove /= context.Count;
         cohesionMove -= agent.transform.position;
+        cohesionMove = Vector3.SmoothDamp(agent.transform.forward, cohesionMove, ref currentVelocity, agentSmoothTime);
 
         return cohesionMove;
     }
 }
+
