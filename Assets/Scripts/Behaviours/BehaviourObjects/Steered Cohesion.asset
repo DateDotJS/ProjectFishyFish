@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98420f8747929764587f9a35fe160b6e, type: 3}
-  m_Name: SteeredCohesion
+  m_Name: Steered Cohesion
   m_EditorClassIdentifier: 
   agentSmoothTime: 0.5
