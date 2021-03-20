@@ -53,7 +53,7 @@ public class Flock : MonoBehaviour
 
             Vector3 velocity = behaviour.CalculateMove(agent, context, this);
             velocity *= driveFactor;
-            if(velocity.sqrMagnitude > squareMaxSpeed)
+            if (velocity.sqrMagnitude > squareMaxSpeed)
             {
                 velocity = velocity.normalized * maxSpeed;
             }
@@ -67,7 +67,7 @@ public class Flock : MonoBehaviour
         Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, neighbourRadius);
         foreach (Collider collider in contextColliders)
         {
-            if(collider != agent.AgentCollider)
+            if (collider != agent.AgentCollider)
             {
                 context.Add(collider.transform);
             }
