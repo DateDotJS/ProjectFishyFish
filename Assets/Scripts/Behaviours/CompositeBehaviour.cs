@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Flock Behaviour/Composite")]
+[CreateAssetMenu(menuName = "Flock/Behaviour/Composite")]
 public class CompositeBehaviour : FlockBehaviour
 {
     public FlockBehaviour[] Behaviours;
