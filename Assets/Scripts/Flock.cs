@@ -23,13 +23,13 @@ public class Flock : MonoBehaviour
 
     private float squareMaxSpeed;
     private float squareNeighbourRadius;
-    public float squareAvoidanceRadius { get; set; }
+    public float SquareAvoidanceRadius { get; set; }
 
     void Start()
     {
         squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighbourRadius = neighbourRadius * neighbourRadius;
-        squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
+        SquareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
 
         for (int i = 0; i < startingCount; i++)
         {
@@ -45,9 +45,34 @@ public class Flock : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        foreach (FlockAgent agent in agents)
+        {
+            List<Transform> context = GetNearbyObjects(agent);
+
+            Vector3 velocity = behaviour.CalculateMove(agent, context, this);
+            velocity *= driveFactor;
+            if(velocity.sqrMagnitude > squareMaxSpeed)
+            {
+                velocity = velocity.normalized * maxSpeed;
+            }
+            agent.Move(velocity);
+        }
+    }
+
+    List<Transform> GetNearbyObjects(FlockAgent agent)
+    {
+        List<Transform> context = new List<Transform>();
+        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, neighbourRadius);
+        foreach (Collider collider in contextColliders)
+        {
+            if(collider != agent.AgentCollider)
+            {
+                context.Add(collider.transform);
+            }
+        }
+
+        return context;
     }
 }
