@@ -27,15 +27,15 @@ public class Flock : MonoBehaviour
 
     void Start()
     {
-        squareMaxSpeed = maxSpeed * maxSpeed;
-        squareNeighbourRadius = neighbourRadius * neighbourRadius;
-        SquareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
+        this.squareMaxSpeed = this.maxSpeed * this.maxSpeed;
+        this.squareNeighbourRadius = this.neighbourRadius * this.neighbourRadius;
+        SquareAvoidanceRadius = this.squareNeighbourRadius * this.avoidanceRadiusMultiplier * this.avoidanceRadiusMultiplier;
 
-        for (int i = 0; i < startingCount; i++)
+        for (int i = 0; i < this.startingCount; i++)
         {
             FlockAgent newAgent = Instantiate(
-                agentPrefab,
-                Random.insideUnitSphere * startingCount * AgentDensity,
+                this.agentPrefab,
+                Random.insideUnitSphere * this.startingCount * AgentDensity,
                 Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)),
                 transform
             );
@@ -50,30 +50,15 @@ public class Flock : MonoBehaviour
     {
         foreach (FlockAgent agent in agents)
         {
-            List<Transform> context = GetNearbyObjects(agent);
+            agent.GetNearbyObjects(neighbourRadius);
 
-            Vector3 velocity = behaviour.CalculateMove(agent, context, this);
-            velocity *= driveFactor;
-            if (velocity.sqrMagnitude > squareMaxSpeed)
+            Vector3 velocity = behaviour.CalculateMove(agent, agent.Context, this);
+            velocity *= this.driveFactor;
+            if (velocity.sqrMagnitude > this.squareMaxSpeed)
             {
-                velocity = velocity.normalized * maxSpeed;
+                velocity = velocity.normalized * this.maxSpeed;
             }
             agent.Move(velocity);
         }
-    }
-
-    List<Transform> GetNearbyObjects(FlockAgent agent)
-    {
-        List<Transform> context = new List<Transform>();
-        Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, neighbourRadius);
-        foreach (Collider collider in contextColliders)
-        {
-            if (collider != agent.AgentCollider)
-            {
-                context.Add(collider.transform);
-            }
-        }
-
-        return context;
     }
 }
