@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Flock : MonoBehaviour
@@ -58,7 +59,9 @@ public class Flock : MonoBehaviour
             {
                 velocity = velocity.normalized * this.maxSpeed;
             }
-            agent.Move(velocity);
+
+            agent.kinematic.linearVel = velocity;
+            agent.Move();
         }
     }
 }

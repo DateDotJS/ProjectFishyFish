@@ -10,16 +10,20 @@ public class FlockAgent : MonoBehaviour
 
     public List<Transform> Context { get; set; }
 
+    public Kinematic kinematic;
+
     void Start()
     {
         AgentCollider = GetComponent<Collider>();
         Context = new List<Transform>();
+
+        kinematic = new Kinematic();
     }
 
-    public void Move(Vector3 velocity)
+    public void Move()
     {
-        transform.forward = velocity;
-        transform.position += velocity * Time.deltaTime;
+        transform.forward = kinematic.linearVel;
+        transform.position += kinematic.linearVel * Time.deltaTime;
     }
 
     public void GetNearbyObjects(float neighbourRadius)
