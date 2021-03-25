@@ -5,21 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behaviour/Alignment")]
 public class AlignmentBehaviour : FilteredFlockBehaviour
 {
-    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector3 CalculateFilteredMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-        List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
-        if (filteredContext.Count == 0)
+        if (context.Count == 0)
             return agent.transform.forward;
 
         Vector3 alignmentMove = Vector3.zero;
-        foreach (Transform item in filteredContext)
+        foreach (Transform item in context)
         {
             alignmentMove += item.transform.forward;
         }
 
-        alignmentMove /= filteredContext.Count;
+        alignmentMove /= context.Count;
 
         return alignmentMove;
     }
 }
-

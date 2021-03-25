@@ -12,7 +12,7 @@ public class CompositeBehaviour : FlockBehaviour
     {
         if (Weights.Length != Behaviours.Length)
         {
-            Debug.Log("Data mismatch in " + name, this);
+            Debug.Log($"Data mismatch in {this}");
             return Vector3.zero;
         }
 
