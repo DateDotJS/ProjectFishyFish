@@ -40,19 +40,19 @@ public class Flock : MonoBehaviour
                 transform
             );
 
-            newAgent.name = "Agent " + i;
+            newAgent.name = ($"Agent {i}");
             newAgent.AgentFlock = this;
-            agents.Add(newAgent);
+            this.agents.Add(newAgent);
         }
     }
 
     void Update()
     {
-        foreach (FlockAgent agent in agents)
+        foreach (FlockAgent agent in this.agents)
         {
             agent.GetNearbyObjects(neighbourRadius);
 
-            Vector3 velocity = behaviour.CalculateMove(agent, agent.Context, this);
+            Vector3 velocity = this.behaviour.CalculateMove(agent, agent.Context, this);
             velocity *= this.driveFactor;
             if (velocity.sqrMagnitude > this.squareMaxSpeed)
             {

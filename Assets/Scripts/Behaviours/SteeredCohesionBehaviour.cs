@@ -10,7 +10,7 @@ public class SteeredCohesionBehaviour : FilteredFlockBehaviour
 
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-        List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
+        List<Transform> filteredContext = (filter is null) ? context : filter.Filter(agent, context);
         if (filteredContext.Count == 0)
             return Vector3.zero;
 
@@ -27,4 +27,3 @@ public class SteeredCohesionBehaviour : FilteredFlockBehaviour
         return cohesionMove;
     }
 }
-
