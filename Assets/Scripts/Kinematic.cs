@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Kinematic serves as a custom data type for storing the movement and rotation of the agent
+/// </summary>
 public class Kinematic
 {
-    //Instantaneous displacement
+    //Instantaneous velocity
     public Vector3 linearVel;
     public float angularVel;
     
