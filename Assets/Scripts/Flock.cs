@@ -58,7 +58,9 @@ public class Flock : MonoBehaviour
             {
                 velocity = velocity.normalized * this.maxSpeed;
             }
-            agent.Move(velocity);
+            
+            agent.Kinematics.LinearVel = velocity;
+            agent.Move();
         }
     }
 }
