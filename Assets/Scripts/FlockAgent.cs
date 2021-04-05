@@ -9,18 +9,23 @@ public class FlockAgent : MonoBehaviour
     public Collider AgentCollider { get; set; }
 
     public List<Transform> Context { get; set; }
-
+    
+    public Kinematic Kinematics;
+    
     void Start()
     {
         AgentCollider = GetComponent<Collider>();
         Context = new List<Transform>();
+        
+        Kinematics = new Kinematic();
     }
 
-    public void Move(Vector3 velocity)
+    public void Move()
     {
-        transform.forward = velocity;
-        transform.position += velocity * Time.deltaTime;
+        transform.forward = Kinematics.LinearVel;
+        transform.position += Kinematics.LinearVel * Time.deltaTime;
     }
+
 
     public void GetNearbyObjects(float neighbourRadius)
     {
