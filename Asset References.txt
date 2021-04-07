@@ -1,0 +1,8 @@
+Asset and Resource links
+------------------------
+
+Skybox:
+https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633
+
+Terrain Texture:
+https://assetstore.unity.com/packages/2d/textures-materials/free-stylized-pbr-textures-pack-111778
