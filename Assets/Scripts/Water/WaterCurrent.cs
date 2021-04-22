@@ -8,7 +8,7 @@ using UnityEngine;
 /// velocity would be affected by this class.
 ///
 /// Note: The direction of this current is depicted by the forward vector (z).
-///         Therefore, you'll need to rotate this game object to change its direction.
+///         Therefore, you'll need to rotate this game object to change the direction of the velocity.
 /// </summary>
 public class WaterCurrent : MonoBehaviour
 {
@@ -17,10 +17,5 @@ public class WaterCurrent : MonoBehaviour
     [SerializeField] private float speed;
     public Vector3 Velocity { get; private set; }
     
-    private void Awake()
-    {
-        Velocity = transform.forward * speed;
-    }
-
-    private void OnDrawGizmosSelected() => Gizmos.DrawLine(transform.position, transform.forward * speed);
+    private void Awake() => Velocity = transform.forward * speed;
 }
