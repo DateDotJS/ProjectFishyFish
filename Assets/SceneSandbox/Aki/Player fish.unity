@@ -4708,6 +4708,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Player
       objectReference: {fileID: 0}
+    - target: {fileID: 251580973659981031, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4992016769241674985, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -4752,7 +4756,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5680770907590711409, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 699371384633077389, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
 --- !u!1 &1426998805
 GameObject:

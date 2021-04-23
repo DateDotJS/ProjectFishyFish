@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
-    // speed / movement params
     // stamina / recovery (longterm and shortterm)
 
     [SerializeField]

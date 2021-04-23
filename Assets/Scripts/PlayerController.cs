@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
 
     private Fish fish;
 
-
     private void Awake() => fish = GetComponent<Fish>();
 
     void Update() => UpdateMovement();
