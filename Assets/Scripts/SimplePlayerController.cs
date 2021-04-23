@@ -10,10 +10,17 @@ public class SimplePlayerController : MonoBehaviour
     [SerializeField] private float maxSideRotation = 0.02f;
     [SerializeField] private float maxPitchRotation = 0.01f;
 
+    private Vector3 externalVelocity = Vector3.zero;
+    private Rigidbody rigidBody;
+
+    private void Awake() => rigidBody = GetComponent<Rigidbody>();
+
     void Update() => UpdateMovement();
 
     private void UpdateMovement()
     {
+        HandlePhysics();
+
         var oldPosition = transform.position;
 
         var forwardMovement = Input.GetButton("Jump");
@@ -30,4 +37,19 @@ public class SimplePlayerController : MonoBehaviour
 
         transform.SetPositionAndRotation(newPosition, newRotation);
     }
+
+
+    // We handle water physics for our player fish here.
+    private void HandlePhysics()
+    {
+        // If external factor is zero, we let RigidBody's linear drag dwindle the velocity to zero.
+        if (externalVelocity != Vector3.zero)
+            rigidBody.velocity = externalVelocity;
+    }
+    
+    // Append an external influence to the player's velocity (i.e. water current).
+    public void AppendForce(Vector3 velocity) => externalVelocity = velocity;
+
+    // Reset the external influence to zero (i.e. leaves water current).
+    public void ResetForce() => externalVelocity = Vector3.zero;
 }

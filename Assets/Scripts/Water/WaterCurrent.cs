@@ -18,4 +18,18 @@ public class WaterCurrent : MonoBehaviour
     public Vector3 Velocity { get; private set; }
     
     private void Awake() => Velocity = transform.forward * speed;
+
+    // Apply water current's velocity to target when they enter it.
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            other.GetComponent<SimplePlayerController>().AppendForce(Velocity);
+    }
+
+    // Remove water current's velocity to target when they leave it.
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            other.GetComponent<SimplePlayerController>().ResetForce();
+    }
 }
