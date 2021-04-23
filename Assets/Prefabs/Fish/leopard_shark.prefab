@@ -55,5 +55,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: leopard_shark
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1c485713d9b9d2841904849e8b3e23a3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 1c485713d9b9d2841904849e8b3e23a3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 1c485713d9b9d2841904849e8b3e23a3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 1c485713d9b9d2841904849e8b3e23a3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 1c485713d9b9d2841904849e8b3e23a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 1c485713d9b9d2841904849e8b3e23a3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c485713d9b9d2841904849e8b3e23a3, type: 3}
