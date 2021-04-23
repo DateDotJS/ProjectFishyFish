@@ -16,7 +16,7 @@ public class Kinematic
     public float AngularAcc;
     
     [Header("Orientation")]
-    public float Orientation;
+    public Quaternion Orientation;
     
     public Kinematic()
     {
@@ -24,6 +24,6 @@ public class Kinematic
         AngularVel = 0;
         LinearAcc = 0;
         AngularAcc = 0;
-        Orientation = 0;
+        Orientation = Quaternion.identity;
     }
 }

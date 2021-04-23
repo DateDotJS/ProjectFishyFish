@@ -22,14 +22,14 @@ public class WaterCurrent : MonoBehaviour
     // Apply water current's velocity to target when they enter it.
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-            other.GetComponent<SimplePlayerController>().AppendForce(Velocity);
+        Fish fishComp = other.GetComponent<Fish>();
+        if (fishComp != null) fishComp.ApplyExternalForce(Velocity);
     }
 
     // Remove water current's velocity to target when they leave it.
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-            other.GetComponent<SimplePlayerController>().ResetForce();
+        Fish fishComp = other.GetComponent<Fish>();
+        if (fishComp != null) fishComp.EndExternalForce();
     }
 }
