@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LoneFlock))]
 public class Predator : MonoBehaviour
 {
-    [SerializeField]
-    private float sightUpdateDelay;
-    [SerializeField]
-    private float sightRadius;
-    [SerializeField]
-    private float blindSpotAngle;
-    [SerializeField]
-    private int maxObservablePreys;
-    [SerializeField]
-    private GameObject testTarget;
+    [SerializeField] private float sightUpdateDelay;
+    [SerializeField] private float sightRadius;
+    [SerializeField] private float blindSpotAngle;
+    [SerializeField] private int maxObservablePreys;
+    [SerializeField] private GameObject testTarget;
+    [SerializeField] private FlockBehaviour pursueBehaviour;
+    [SerializeField] private FlockBehaviour wanderBehaviour;
 
     private readonly string FISH_LAYER = "Fish";
     private int fishLayerMask;
@@ -26,6 +24,8 @@ public class Predator : MonoBehaviour
 
     private float blindSpotThreshold;
 
+    private LoneFlock flock;
+
     private void Awake()
     {
         fishLayerMask = LayerMask.GetMask("Fish");
@@ -37,6 +37,8 @@ public class Predator : MonoBehaviour
         targetedPrey = 0;
 
         blindSpotThreshold = 180.0f - (blindSpotAngle / 2);
+
+        flock = GetComponent<LoneFlock>();
     }
 
     private void FixedUpdate()
@@ -51,7 +53,10 @@ public class Predator : MonoBehaviour
         }
 
         if(ChooseTarget()) {
-            // Move and look towards target
+            flock.SetTarget(observedFish[targetedPrey].gameObject);
+            flock.SetBehaviour(pursueBehaviour);
+        } else {
+            flock.SetBehaviour(wanderBehaviour);
         }
     }
 
@@ -82,10 +87,9 @@ public class Predator : MonoBehaviour
 
         for (int i = 0; i < nbObservedFish; i++) {
             // TODO: Check if fish is a prey
-            if(true) {
+            if(observedFish[i].gameObject != gameObject && true) {
                 Vector3 preyPosition = observedFish[i].transform.position;
                 if (!IsPositionInBlindSpot(preyPosition)) {
-                    print("visible");
                     float distance = Vector3.Distance(transform.position, preyPosition);
                     if(distance < minDistance) {
                         chosenTarget = i;

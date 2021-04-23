@@ -25,7 +25,6 @@ public class FlockAgent : MonoBehaviour
 
     public void Move()
     {
-        transform.forward = Kinematics.LinearVel;
         transform.position += Kinematics.LinearVel * Time.deltaTime;
     }
 
