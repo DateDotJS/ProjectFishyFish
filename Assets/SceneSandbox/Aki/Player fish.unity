@@ -1818,7 +1818,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 434874239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 65.30409, y: 8.589999, z: 46.400734}
+  m_LocalPosition: {x: 335.08698, y: 50.43, z: 256.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3246,7 +3246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2340142459882287084, guid: f6daf4b315fb65c41859c0a8deadd339, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 65.30409
+      value: 335.08698
       objectReference: {fileID: 0}
     - target: {fileID: 2340142459882287084, guid: f6daf4b315fb65c41859c0a8deadd339, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3254,7 +3254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2340142459882287084, guid: f6daf4b315fb65c41859c0a8deadd339, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 46.400734
+      value: 256.03
       objectReference: {fileID: 0}
     - target: {fileID: 2340142459882287084, guid: f6daf4b315fb65c41859c0a8deadd339, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3291,6 +3291,10 @@ PrefabInstance:
     - target: {fileID: 2340142459882287086, guid: f6daf4b315fb65c41859c0a8deadd339, type: 3}
       propertyPath: m_Name
       value: CM Player Cam
+      objectReference: {fileID: 0}
+    - target: {fileID: 2340142460142359076, guid: f6daf4b315fb65c41859c0a8deadd339, type: 3}
+      propertyPath: CameraDistance
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6daf4b315fb65c41859c0a8deadd339, type: 3}
@@ -4883,6 +4887,10 @@ PrefabInstance:
       value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 774721902, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 774721902, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
       propertyPath: InitialModule.maxNumParticles
       value: 3
       objectReference: {fileID: 0}
@@ -4912,6 +4920,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 870186784, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
       propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 870186784, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
+      propertyPath: moveWithTransform
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 870186784, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
@@ -4952,7 +4964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4435152413568659026, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
       propertyPath: fastSwimEmissionRate
-      value: 1.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4435152413568659026, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
       propertyPath: fastSwimParticleSpeed
