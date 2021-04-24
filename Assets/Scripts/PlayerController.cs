@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
         // Let the level barrier follow the player, preventing them from rising a certain level
         // until they evolve/become bigger
+        if (currentBarrier != null)
         currentBarrier.position = new Vector3(transform.position.x, ceilingHeight, transform.position.z);
     }
 }
