@@ -5,7 +5,7 @@ using UnityEngine;
 public class Flock : MonoBehaviour
 {
     [SerializeField] private FlockAgent agentPrefab;
-    List<FlockAgent> agents = new List<FlockAgent>();
+    protected List<FlockAgent> agents = new List<FlockAgent>();
     [SerializeField] private FlockBehaviour behaviour;
 
     [Range(1, 500)]
@@ -15,16 +15,16 @@ public class Flock : MonoBehaviour
     [Range(1f, 100f)]
     [SerializeField] private float driveFactor = 10f;
     [Range(1f, 100f)]
-    [SerializeField] private float maxSpeed = 5f;
+    [SerializeField] protected float maxSpeed = 5f;
     [Range(1f, 10f)]
-    [SerializeField] private float neighbourRadius = 1.5f;
+    [SerializeField] protected float neighbourRadius = 1.5f;
     [Range(10f, 100f)]
     [SerializeField] private float targetRadius = 50f;
     [Range(0f, 1f)]
-    [SerializeField] private float avoidanceRadiusMultiplier = 0.5f;
+    [SerializeField] protected float avoidanceRadiusMultiplier = 0.5f;
 
-    private float squareMaxSpeed;
-    private float squareNeighbourRadius;
+    protected float squareMaxSpeed;
+    protected float squareNeighbourRadius;
     public float SquareAvoidanceRadius { get; set; }
 
     void Start()
@@ -77,4 +77,8 @@ public class Flock : MonoBehaviour
         return maxSpeed;
     }
 
+    public void SetBehaviour(FlockBehaviour behaviour)
+    {
+        this.behaviour = behaviour;
+    }
 }
