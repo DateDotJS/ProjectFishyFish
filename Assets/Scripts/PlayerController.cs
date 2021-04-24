@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxSideRotation = 0.02f;
     [SerializeField] private float maxPitchRotation = 0.01f;
 
+    [SerializeField] private float lookAngleBounds = 85f;
+
     [Header("Level Barrier")]
     [Tooltip("Pass in a water current object that will follow and act as a level barrier")]
     [SerializeField] private Transform currentBarrier;
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateMovement()
     {
         var oldPosition = transform.position;
+        var oldRotation = transform.rotation;
 
         var forwardMovement = Input.GetButton("Jump");
         var mouseY = Input.GetAxis("Mouse Y");
@@ -58,6 +61,9 @@ public class PlayerController : MonoBehaviour
         var newPosition = oldPosition + deltaMovement;
 
         var newRotation = Quaternion.LookRotation(newPosition - oldPosition);
+
+        if (IsTooPitched(newRotation))
+            newRotation = oldRotation;
 
         fish.SetVelocity(deltaMovement);
         fish.SetRotation(newRotation);
@@ -98,5 +104,11 @@ public class PlayerController : MonoBehaviour
     {
         if (!eatingBubbles.isPlaying)
             eatingBubbles.Play();
+    }
+
+    private bool IsTooPitched(Quaternion newRotation)
+    {
+        return Vector3.Angle(Vector3.up, newRotation * Vector3.forward) < (90 - this.lookAngleBounds)
+                    || Vector3.Angle(Vector3.down, newRotation * Vector3.forward) < (90 - this.lookAngleBounds);
     }
 }
