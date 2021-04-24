@@ -8,11 +8,17 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
+    [Header("Fish Movement")]
     [SerializeField] private float minForwardSpeed = 3f;
     [SerializeField] private float maxForwardSpeed = 5f;
 
     [SerializeField] private float maxSideRotation = 0.02f;
     [SerializeField] private float maxPitchRotation = 0.01f;
+
+    [Header("Level Barrier")]
+    [Tooltip("Pass in a water current object that will follow and act as a level barrier")]
+    [SerializeField] private Transform currentBarrier;
+    public float ceilingHeight;
 
     private Fish fish;
 
@@ -38,5 +44,9 @@ public class PlayerController : MonoBehaviour
 
         fish.SetVelocity(deltaMovement);
         fish.SetRotation(newRotation);
+
+        // Let the level barrier follow the player, preventing them from rising a certain level
+        // until they evolve/become bigger
+        currentBarrier.position = new Vector3(transform.position.x, ceilingHeight, transform.position.z);
     }
 }
