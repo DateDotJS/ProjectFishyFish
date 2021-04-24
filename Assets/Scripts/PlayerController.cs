@@ -36,11 +36,16 @@ public class PlayerController : MonoBehaviour
     private readonly int isSprintingParaHash = Animator.StringToHash("IsSprinting");
 
     private Fish fish;
+    private ParticleSystem.MainModule particleMainSettings;
+    private ParticleSystem.EmissionModule particleEmissionSettings;
 
     private void Awake()
     {
         fish = GetComponent<Fish>();
         animator = GetComponent<Animator>();
+
+        particleMainSettings = swimmingBubbles.main;
+        particleEmissionSettings = swimmingBubbles.emission;
     }
 
     void Update() => UpdateMovement();
@@ -73,11 +78,8 @@ public class PlayerController : MonoBehaviour
         animator.SetBool(isSprintingParaHash, forwardMovement);
 
         // play particles if fish is swimming
-        if (deltaMovement != Vector3.zero)
+        if (swimmingBubbles != null && deltaMovement != Vector3.zero)
         {
-            var particleMainSettings = swimmingBubbles.main;
-            var particleEmissionSettings = swimmingBubbles.emission;
-
             if (forwardMovement) { // if fast swimming
                 particleMainSettings.startSpeed = fastSwimParticleSpeed;
                 particleEmissionSettings.rateOverTime = fastSwimEmissionRate;
@@ -90,9 +92,6 @@ public class PlayerController : MonoBehaviour
             if (!swimmingBubbles.isPlaying) 
                 swimmingBubbles.Play();
         }
-        else {
-            swimmingBubbles.Stop();
-         }
 
         // Let the level barrier follow the player, preventing them from rising a certain level
         // until they evolve/become bigger
@@ -102,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayEatingFX()
     {
-        if (!eatingBubbles.isPlaying)
+        if (eatingBubbles != null && !eatingBubbles.isPlaying)
             eatingBubbles.Play();
     }
 
