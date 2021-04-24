@@ -13,7 +13,7 @@ public class LonePursueBehaviour : FlockBehaviour
     {
         Vector3 direction = ((LoneFlock)flock).GetTarget().transform.position - agent.transform.position;
         Vector3 velocity = new Vector3(0, 0, 0);
-        Debug.Log(((LoneFlock)flock).GetTarget().transform.position);
+
         if (direction.magnitude < radius) {
             return velocity;
         }
