@@ -18,6 +18,8 @@ public class Flock : MonoBehaviour
     [SerializeField] private float maxSpeed = 5f;
     [Range(1f, 10f)]
     [SerializeField] private float neighbourRadius = 1.5f;
+    [Range(10f, 100f)]
+    [SerializeField] private float targetRadius = 50f;
     [Range(0f, 1f)]
     [SerializeField] private float avoidanceRadiusMultiplier = 0.5f;
 
@@ -51,6 +53,7 @@ public class Flock : MonoBehaviour
         foreach (FlockAgent agent in this.agents)
         {
             agent.GetNearbyObjects(neighbourRadius);
+            agent.GetNearbyPredators(targetRadius);
 
             Vector3 velocity = this.behaviour.CalculateMove(agent, agent.Context, this);
             velocity *= this.driveFactor;
@@ -63,4 +66,15 @@ public class Flock : MonoBehaviour
             agent.Move();
         }
     }
+
+    public void ChangeFlockSpeed(float newSpeed)
+    {
+        maxSpeed = newSpeed;
+    }
+
+    public float GetFlockSpeed()
+    {
+        return maxSpeed;
+    }
+
 }
