@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float lookAngleBounds = 85f;
 
     [Header("Level Barrier")]
-    [Tooltip("Pass in a water current object that will follow and act as a level barrier")]
-    [SerializeField] private Transform currentBarrier;
+    [Tooltip("Pass in a water current object that will follow the player and act as a level barrier")]
+    [SerializeField] private Transform ceilingCurrentPrefab;
     public float ceilingHeight;
 
     [Header("Particles")]
@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
         particleMainSettings = swimmingBubbles.main;
         particleEmissionSettings = swimmingBubbles.emission;
+
+        ceilingCurrentPrefab = Instantiate(ceilingCurrentPrefab, Vector3.zero, ceilingCurrentPrefab.rotation);
     }
 
     void Update() => UpdateMovement();
@@ -95,8 +97,8 @@ public class PlayerController : MonoBehaviour
 
         // Let the level barrier follow the player, preventing them from rising a certain level
         // until they evolve/become bigger
-        if (currentBarrier != null)
-            currentBarrier.position = new Vector3(transform.position.x, ceilingHeight, transform.position.z);
+        if (ceilingCurrentPrefab != null)
+            ceilingCurrentPrefab.position = new Vector3(transform.position.x, ceilingHeight, transform.position.z);
     }
 
     public void PlayEatingFX()

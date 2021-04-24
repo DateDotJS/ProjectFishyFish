@@ -89,7 +89,7 @@ MonoBehaviour:
   maxSideRotation: 0.02
   maxPitchRotation: 0.01
   lookAngleBounds: 85
-  currentBarrier: {fileID: 0}
+  ceilingCurrentPrefab: {fileID: 1160223080939138095, guid: 42f21fac533bd2b47b6fa4eda208671c, type: 3}
   ceilingHeight: 75
   swimmingBubbles: {fileID: 870186784}
   swimParticleSpeed: 0.5
