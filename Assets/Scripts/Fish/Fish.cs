@@ -6,15 +6,26 @@ public class Fish : MonoBehaviour
 {
     // stamina / recovery (longterm and shortterm)
 
-    [SerializeField]
-    private float drag;
+    private Animator animator;
+    private readonly int swimVelocityParaHash = Animator.StringToHash("SwimVelocity");
 
+    [Header("Movement Physics")]
+    [SerializeField] private float drag;
     private Kinematic kinematic;
     private Vector3 externalVelocity;
     private Vector3 momentum;
-    private Vector3 angularMomentum;
+    private Vector3 angularMomentum; // TODO figure out handling angular momentum
 
-    private void Awake() => kinematic = new Kinematic();
+    [Header("Particles")]
+    [SerializeField] private ParticleSystem swimmingBubbles;
+    [SerializeField] private ParticleSystem eatinggBubbles;
+
+    
+    private void Awake()
+    {
+        kinematic = new Kinematic();
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -23,6 +34,8 @@ public class Fish : MonoBehaviour
         // Calculate transform with kinematic linear movement + any other force applied
         transform.position = transform.position + (kinematic.LinearVel * Time.deltaTime) + (momentum * Time.deltaTime);
         transform.rotation = kinematic.Orientation;
+
+        AnimateSwimming();
     }
 
 
@@ -35,6 +48,16 @@ public class Fish : MonoBehaviour
 
         // calculate drag factor of the momentum
         momentum = momentum * (1 - Time.deltaTime * drag);
+    }
+
+    private void AnimateSwimming()
+    {
+        // play wobble animation if swimming
+        animator.SetFloat(swimVelocityParaHash, kinematic.LinearVel.magnitude);
+
+        // play particles if fish is swimming
+        if (kinematic.LinearVel != Vector3.zero && !swimmingBubbles.isPlaying)
+            swimmingBubbles.Play();
     }
 
 
@@ -54,7 +77,14 @@ public class Fish : MonoBehaviour
 
     #endregion
 
+    public void PlayEatingFX()
+    {
+        if (!eatinggBubbles.isPlaying)
+            eatinggBubbles.Play();
+    }
 
+
+    // FROM UML DIAGRAM ON DIAGRAM.IO
     // ability / unique methods here 
     // use prey ability(s)
     // use predator ability(s)
