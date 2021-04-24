@@ -6,14 +6,14 @@ public class Fish : MonoBehaviour
 {
     // stamina / recovery (longterm and shortterm)
 
-    [SerializeField]
-    private float drag;
-
+    [Header("Movement Physics")]
+    [SerializeField] private float drag;
     private Kinematic kinematic;
     private Vector3 externalVelocity;
     private Vector3 momentum;
-    private Vector3 angularMomentum;
+    private Vector3 angularMomentum; // TODO figure out handling angular momentum
 
+    
     private void Awake() => kinematic = new Kinematic();
 
     void Update()
@@ -55,6 +55,7 @@ public class Fish : MonoBehaviour
     #endregion
 
 
+    // FROM UML DIAGRAM ON DIAGRAM.IO
     // ability / unique methods here 
     // use prey ability(s)
     // use predator ability(s)
