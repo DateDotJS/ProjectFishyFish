@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,10 @@ public class StayInRadiusBehaviour : FlockBehaviour
 
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
+        center = flock.transform.position;
+        
         Vector3 centerOffset = this.center - agent.transform.position;
+
         float relativePositionToCenter = centerOffset.magnitude / this.radius;
 
         if (relativePositionToCenter < this.radiusThreshold)
@@ -20,6 +24,7 @@ public class StayInRadiusBehaviour : FlockBehaviour
             return Vector3.zero;
         }
 
+        //Debug.Log(centerOffset * relativePositionToCenter * relativePositionToCenter);
         return centerOffset * relativePositionToCenter * relativePositionToCenter;
     }
 }

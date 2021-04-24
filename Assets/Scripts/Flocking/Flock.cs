@@ -27,6 +27,13 @@ public class Flock : MonoBehaviour
     protected float squareNeighbourRadius;
     public float SquareAvoidanceRadius { get; set; }
 
+    private FlockManager flockManager;
+
+    private void Awake()
+    {
+        this.flockManager = FindObjectOfType<FlockManager>();
+    }
+
     void Start()
     {
         this.squareMaxSpeed = this.maxSpeed * this.maxSpeed;
@@ -37,7 +44,7 @@ public class Flock : MonoBehaviour
         {
             FlockAgent newAgent = Instantiate(
                 this.agentPrefab,
-                Random.insideUnitSphere * this.startingCount * AgentDensity,
+                Random.insideUnitSphere * this.startingCount * AgentDensity + transform.position,
                 Quaternion.Euler(Vector3.forward * Random.Range(0f, 360f)),
                 transform
             );
@@ -46,6 +53,8 @@ public class Flock : MonoBehaviour
             newAgent.AgentFlock = this;
             this.agents.Add(newAgent);
         }
+
+        this.flockManager.AddFlock(this);
     }
 
     void Update()
