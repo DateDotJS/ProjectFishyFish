@@ -4834,6 +4834,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 687587111, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 251580973659981031, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
       propertyPath: m_Name
       value: Main Player
