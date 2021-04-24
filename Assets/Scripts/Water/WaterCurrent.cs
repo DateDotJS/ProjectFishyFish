@@ -12,10 +12,36 @@ using UnityEngine;
 /// </summary>
 public class WaterCurrent : MonoBehaviour
 {
-    [Tooltip("This specifies the speed of the velocity. To change the direction of it, you will need to change this" +
-             " game object's rotation.")]
+    [Tooltip("The speed of the current's velocity. To change the direction, change this game object's rotation.")]
     [SerializeField] private float speed;
+
+    [Tooltip("If this water current acts as a barrier to next level, set to true.")]
+    [SerializeField] private bool isBarrier;
+
+    [Tooltip("The speed of the velocity applied to a fish that isn't strong/big enough to pass through.")]
+    [SerializeField] private float barrierForce;
+
     public Vector3 Velocity { get; private set; }
     
     private void Awake() => Velocity = transform.forward * speed;
+
+    // Apply water current's velocity to target when they enter it.
+    private void OnTriggerEnter(Collider other)
+    {
+        Fish fishComp = other.GetComponent<Fish>();
+        if (fishComp == null) return;
+
+        // if barrier, push fish down, otherwise let it ride the current's flow
+        if (isBarrier && other.CompareTag("Player"))
+            fishComp.ApplyExternalForce(-transform.up * barrierForce);
+        else
+            fishComp.ApplyExternalForce(Velocity);
+    }
+
+    // Remove water current's velocity to target when they leave it.
+    private void OnTriggerExit(Collider other)
+    {
+        Fish fishComp = other.GetComponent<Fish>();
+        if (fishComp != null) fishComp.EndExternalForce();
+    }
 }
