@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class AudioSlider : MonoBehaviour
+public class AudioSliderUI : MonoBehaviour
 {
     [SerializeField] private Slider slider;
     
