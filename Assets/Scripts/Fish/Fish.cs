@@ -10,6 +10,7 @@ public enum FishType
     BlueFish,
     GreenFish, 
     PurpleFish,
+    OrangeFish,
 }
 
 public class Fish : MonoBehaviour
