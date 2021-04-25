@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3501797468630984027
+--- !u!1001 &1097956079253943800
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,24 +8,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3640181497553391692, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
+      propertyPath: maxSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640181497553391692, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: agentPrefab
       value: 
-      objectReference: {fileID: 5264648413399374210, guid: fd363cd9874862447971b6940bd96998, type: 3}
+      objectReference: {fileID: 4742725496759847005, guid: ade480e219a587e42a858d584d68700f, type: 3}
+    - target: {fileID: 3640181497553391692, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
+      propertyPath: startingCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 39.991302
+      value: 41.290405
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.753422
+      value: 19.388653
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 195.35007
+      value: 244.55594
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -57,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8529792793128531049, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_Name
-      value: Flock L_Pink
+      value: Flock L_Green
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}

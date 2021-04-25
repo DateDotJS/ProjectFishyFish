@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: agentPrefab
       value: 
       objectReference: {fileID: 3949195668595192904, guid: a28647a4856fb29408ef64556332c3bb, type: 3}
+    - target: {fileID: 3640181497553391692, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
+      propertyPath: startingCount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_RootOrder
       value: 0

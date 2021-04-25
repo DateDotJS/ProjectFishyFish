@@ -1,27 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &55051135342342402
+--- !u!1001 &1459420754185601760
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3640181497553391692, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
+      propertyPath: maxSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640181497553391692, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
+      propertyPath: agentPrefab
+      value: 
+      objectReference: {fileID: 12494536233735528, guid: 9c3045fd834cea74bb60676499830526, type: 3}
+    - target: {fileID: 3640181497553391692, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
+      propertyPath: startingCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.739147
+      value: 49.296898
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.157114
+      value: 18.12275
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 192.15997
+      value: 242.55225
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8529792793128531049, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_Name
-      value: Flock Base
+      value: Flock L_Red
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
