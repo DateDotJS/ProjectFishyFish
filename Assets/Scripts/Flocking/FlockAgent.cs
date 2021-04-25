@@ -13,7 +13,11 @@ public class FlockAgent : MonoBehaviour
     public List<Transform> PredatorList { get; set; }
     
     public Kinematic Kinematics;
-    
+
+    [SerializeField] private float obstacleUpdateDelay = 1;
+    private float obstacleUpdateTimer;
+    static private int obstacleLayerMask;
+
     void Start()
     {
         AgentCollider = GetComponent<Collider>();
@@ -21,6 +25,9 @@ public class FlockAgent : MonoBehaviour
         PredatorList = new List<Transform>();
         
         Kinematics = new Kinematic();
+
+        obstacleUpdateTimer = obstacleUpdateDelay;
+        obstacleLayerMask = LayerMask.GetMask("Obstacle");
     }
 
     public void Move()
@@ -34,7 +41,14 @@ public class FlockAgent : MonoBehaviour
     {
         Context.Clear();
 
-        var contextColliders = Physics.OverlapSphere(transform.position, neighbourRadius);
+        List<Collider> contextColliders = AgentFlock.GetAgentsWithinRange(this, transform.position, neighbourRadius);
+
+        obstacleUpdateTimer += Time.deltaTime;
+        if(obstacleUpdateTimer >= obstacleUpdateDelay) {
+            obstacleUpdateTimer = Time.deltaTime;
+            Collider[] colliders = Physics.OverlapSphere(transform.position, neighbourRadius, obstacleLayerMask);
+            contextColliders.AddRange(colliders);
+        } 
 
         foreach (var collider in contextColliders)
         {
