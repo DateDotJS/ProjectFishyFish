@@ -94,5 +94,9 @@ public class Flock : MonoBehaviour
     public void RemoveAgent(FlockAgent agent)
     {
         agents.Remove(agent);
+
+        if(agents.Count == 0) {
+            Destroy(gameObject);
+        }
     }
 }
