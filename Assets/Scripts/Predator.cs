@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LoneFlock))]
+[RequireComponent(typeof(Food))]
 public class Predator : MonoBehaviour
 {
     [SerializeField] private float sightUpdateDelay;
     [SerializeField] private float sightRadius;
     [SerializeField] private float blindSpotAngle;
     [SerializeField] private int maxObservablePreys;
-    [SerializeField] private GameObject testTarget;
     [SerializeField] private FlockBehaviour pursueBehaviour;
     [SerializeField] private FlockBehaviour wanderBehaviour;
+
+    private Food food;
 
     private readonly string FISH_LAYER = "Fish";
     static private int fishLayerMask;
@@ -28,6 +30,8 @@ public class Predator : MonoBehaviour
 
     private void Awake()
     {
+        food = GetComponent<Food>();
+
         fishLayerMask = LayerMask.GetMask("Fish");
 
         sightTimer = sightUpdateDelay;
@@ -47,13 +51,7 @@ public class Predator : MonoBehaviour
         // Look for fishes
         sightTimer += Time.fixedDeltaTime;
 
-        if(sightTimer >= sightUpdateDelay) {
-            sightTimer = 0.0f;
-            
-            nbObservedFish = Physics.OverlapSphereNonAlloc(transform.position, sightRadius, observedFish, fishLayerMask);
-        }
-
-        if(ChooseTarget()) {
+        if (ChooseTarget()) {
             flock.SetTarget(observedFish[targetedPrey].gameObject);
             flock.SetBehaviour(pursueBehaviour);
         } else {
@@ -72,7 +70,7 @@ public class Predator : MonoBehaviour
         //float z = transform.forward.z - sightRadius;
         //Gizmos.DrawLine(transform.position, new Vector3(x/2, y, z));
         //Gizmos.DrawLine(transform.position, new Vector3(-x/2, y, z));
-       // Gizmos.DrawLine(transform.position, new Vector3(x/2, -y, z));
+        // Gizmos.DrawLine(transform.position, new Vector3(x/2, -y, z));
         //Gizmos.DrawLine(transform.position, new Vector3(-x/2, -y, z));
         //Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, y, z));
         //Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, -y, z));
@@ -83,15 +81,21 @@ public class Predator : MonoBehaviour
      */
     private bool ChooseTarget()
     {
+        if (sightTimer >= sightUpdateDelay) {
+            sightTimer = 0.0f;
+
+            nbObservedFish = Physics.OverlapSphereNonAlloc(transform.position, sightRadius, observedFish, fishLayerMask);
+        }
+
         int chosenTarget = -1;
         float minDistance = Mathf.Infinity;
 
         for (int i = 0; i < nbObservedFish; i++) {
-            if(observedFish[i].gameObject != gameObject && !observedFish[i].gameObject.CompareTag("Predator")) {
+            if (observedFish[i].gameObject != gameObject && !observedFish[i].gameObject.CompareTag("Predator")) {
                 Vector3 preyPosition = observedFish[i].transform.position;
                 if (!IsPositionInBlindSpot(preyPosition)) {
                     float distance = Vector3.Distance(transform.position, preyPosition);
-                    if(distance < minDistance) {
+                    if (distance < minDistance) {
                         chosenTarget = i;
                         minDistance = distance;
                     }
@@ -99,7 +103,7 @@ public class Predator : MonoBehaviour
             }
         }
 
-        if(chosenTarget == -1 || minDistance == Mathf.Infinity) {
+        if (chosenTarget == -1 || minDistance == Mathf.Infinity) {
             return false;
         } else {
             targetedPrey = chosenTarget;
@@ -111,5 +115,26 @@ public class Predator : MonoBehaviour
     {
         float anglePredatorToPosition = Vector3.Angle(transform.forward, position);
         return anglePredatorToPosition >= blindSpotThreshold;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("FishFlocker"))
+            CollideWithFlockAgent(collision.gameObject.GetComponent<FlockAgent>());
+    }
+
+    private void CollideWithFlockAgent(FlockAgent flockAgent)
+    {
+        var agentAsFood = flockAgent.GetComponent<Food>();
+
+        if (food.IsRelativePreyToSelf(agentAsFood))
+            EatFish(flockAgent, agentAsFood);
+
+    }
+
+    private void EatFish(FlockAgent flockAgent, Food agentAsFood)
+    {
+        flockAgent.DestroyAgent();
+        sightTimer = sightUpdateDelay;
     }
 }

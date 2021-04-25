@@ -19,18 +19,19 @@ public class FlockManager : MonoBehaviour
 
     private void Update()
     {
-        foreach (var flock in this.flocks)
+        foreach (var flock in this.flocks) {
+            if (flock == null) {
+                flocks.RemoveAll(f => f == null);
+                break;
+            }
+
             CheckFlockDrawDistance(flock);
+        }
+            
     }
 
     private void CheckFlockDrawDistance(Flock flock)
     {
-        if (flock is null)
-        {
-            this.flocks.RemoveAll(flock => flock is null);
-            return;
-        }
-
         var distance = Vector3.Distance(flock.transform.position, player.transform.position);
 
         if (distance > this.drawDistance && flock.gameObject.activeSelf)
