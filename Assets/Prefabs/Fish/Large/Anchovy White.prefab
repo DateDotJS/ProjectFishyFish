@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3015472402593804695, guid: 23794a2d362c90e4cb31b87cd3e02c1e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6050451380156666776, guid: 23794a2d362c90e4cb31b87cd3e02c1e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -51,9 +55,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6076719068998240590, guid: 23794a2d362c90e4cb31b87cd3e02c1e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6824253108698955525, guid: 23794a2d362c90e4cb31b87cd3e02c1e, type: 3}
       propertyPath: m_Name
-      value: Anchovy Base
+      value: Anchovy White
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824253108698955525, guid: 23794a2d362c90e4cb31b87cd3e02c1e, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23794a2d362c90e4cb31b87cd3e02c1e, type: 3}

@@ -811,22 +811,6 @@ PrefabInstance:
       propertyPath: testTarget
       value: 
       objectReference: {fileID: 448442473}
-    - target: {fileID: 1328052389, guid: b7f6763287adeaa4d9dba82d0ab514bf, type: 3}
-      propertyPath: maxSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328052389, guid: b7f6763287adeaa4d9dba82d0ab514bf, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328052389, guid: b7f6763287adeaa4d9dba82d0ab514bf, type: 3}
-      propertyPath: wanderDelay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1328052390, guid: b7f6763287adeaa4d9dba82d0ab514bf, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1315195297474275871, guid: b7f6763287adeaa4d9dba82d0ab514bf, type: 3}
       propertyPath: m_Name
       value: Predator
