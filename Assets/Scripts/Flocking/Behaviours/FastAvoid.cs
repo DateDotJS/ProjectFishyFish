@@ -16,7 +16,7 @@ public class FastAvoid : FilteredFlockBehaviour
             //Reset speed to initial one
             if (speedChanged == true)
             {
-                flock.ChangeFlockSpeed(flock.GetFlockSpeed() / extraSpeed);
+                //flock.ChangeFlockSpeed(flock.GetFlockSpeed() / extraSpeed);
                 speedChanged = false;
             }
 
@@ -40,13 +40,13 @@ public class FastAvoid : FilteredFlockBehaviour
         //Increase speed of flock while using fast-avoid behavior
         if (speedChanged == false)
         {
-            flock.ChangeFlockSpeed(flock.GetFlockSpeed() * extraSpeed);
+            //flock.ChangeFlockSpeed(flock.GetFlockSpeed() * extraSpeed);
             speedChanged = true;
         }
         
         //Direction opposite to predator position
         fastAvoidanceMove = agentPosition - (-avgPredatorPos/nThingsToAvoid);
         
-        return fastAvoidanceMove;
+        return fastAvoidanceMove * (speedChanged ? extraSpeed : 1);
     }
 }

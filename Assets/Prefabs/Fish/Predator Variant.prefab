@@ -68,6 +68,9 @@ MonoBehaviour:
   neighbourRadius: 1.5
   targetRadius: 50
   avoidanceRadiusMultiplier: 0.5
+  minPredatorPresenceDistance: 0
+  minPredatorChaseDistance: 0
+  minPredatorAttackDistance: 0
   wanderDelay: 2
 --- !u!114 &1328052390
 MonoBehaviour:
@@ -153,6 +156,10 @@ PrefabInstance:
     - target: {fileID: 6483947018394729711, guid: 1965b2a1509b8aa4ca016a2b656d0077, type: 3}
       propertyPath: m_Name
       value: Predator Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483947018394729711, guid: 1965b2a1509b8aa4ca016a2b656d0077, type: 3}
+      propertyPath: m_TagString
+      value: Predator
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1965b2a1509b8aa4ca016a2b656d0077, type: 3}

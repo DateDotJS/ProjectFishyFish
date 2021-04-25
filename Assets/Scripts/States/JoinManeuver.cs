@@ -14,7 +14,7 @@ public class JoinManeuver : StateMachineBehaviour
 
         for (int i = 0; i < behaviour.Behaviours.Length; i++)
         {
-            if (behaviour.Behaviours[i] is SplitBehaviour)
+            if (behaviour.Behaviours[i] is JoinBehaviour)
                 behaviour.Weights[i] = 0.5f;
         }
     }
@@ -28,7 +28,7 @@ public class JoinManeuver : StateMachineBehaviour
 
         for (int i = 0; i < behaviour.Behaviours.Length; i++)
         {
-            if (behaviour.Behaviours[i] is SplitBehaviour)
+            if (behaviour.Behaviours[i] is JoinBehaviour)
                 behaviour.Weights[i] = 0f;
         }
 

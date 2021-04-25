@@ -48,6 +48,6 @@ public class FlockManager : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(this.player.transform.position, this.drawDistance);
+        //Gizmos.DrawWireSphere(this.player.transform.position, this.drawDistance);
     }
 }

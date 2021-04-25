@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,18 @@ public class CompositeBehaviour : FlockBehaviour
 {
     public FlockBehaviour[] Behaviours;
     public float[] Weights;
+
+    private void OnEnable()
+    {
+        for (int i = 0; i < Behaviours.Length; i++)
+        {
+            if (Behaviours[i] is FastAvoid || Behaviours[i] is HerdBehaviour || Behaviours[i] is SplitBehaviour
+                || Behaviours[i] is JoinBehaviour)
+            {
+                Weights[i] = 0;
+            }
+        }
+    }
 
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
