@@ -86,8 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfea42a0403e0a745841e6382fc8dee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinForwardSpeed: 3
-  MaxForwardSpeed: 5
+  MinForwardSpeed: 5
+  MaxForwardSpeed: 8
   maxSideRotation: 0.02
   maxPitchRotation: 0.01
   lookAngleBounds: 85
@@ -98,7 +98,6 @@ MonoBehaviour:
   swimEmissionRate: 0.3
   fastSwimParticleSpeed: 3
   fastSwimEmissionRate: 5
-  eatingBubbles: {fileID: 774721902}
 --- !u!114 &687587110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +273,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 62a0b8781b05b11479c40dfcffee97aa, type: 2}
   - {fileID: 11400000, guid: a5a4debd2fda5ce499e08dc183e2acec, type: 2}
   - {fileID: 11400000, guid: 88cea69595e786d4288de4afa9a33836, type: 2}
+  eatingBubbles: {fileID: 0}
 --- !u!114 &4126775583544951955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,10 +608,5 @@ PrefabInstance:
 --- !u!4 &774721900 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8794512133385176270, guid: dc298af201b3a614cb3fbeeae6c2678f, type: 3}
-  m_PrefabInstance: {fileID: 8794512133017834914}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &774721902 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8794512133385176268, guid: dc298af201b3a614cb3fbeeae6c2678f, type: 3}
   m_PrefabInstance: {fileID: 8794512133017834914}
   m_PrefabAsset: {fileID: 0}

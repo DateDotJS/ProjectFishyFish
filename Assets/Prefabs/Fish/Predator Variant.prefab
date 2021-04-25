@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sightUpdateDelay: 2
-  sightRadius: 50
-  blindSpotAngle: 50
+  sightRadius: 20
+  blindSpotAngle: 220
   maxObservablePreys: 50
   pursueBehaviour: {fileID: 11400000, guid: 19e05dad621ffd347b070cd61501e0f6, type: 2}
   wanderBehaviour: {fileID: 11400000, guid: 46c1e77bbd1864f4784c6b12a23f4f92, type: 2}
