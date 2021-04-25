@@ -9,7 +9,7 @@ public class LonePursueBehaviour : FlockBehaviour
     [SerializeField] private float radius;
     [SerializeField] private float timeToTarget = 0.25f;
 
-    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
+    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock, float time)
     {
         Vector3 direction = ((LoneFlock)flock).GetTarget().transform.position - agent.transform.position;
         Vector3 velocity = new Vector3(0, 0, 0);

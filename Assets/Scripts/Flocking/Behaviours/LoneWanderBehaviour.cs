@@ -5,9 +5,26 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Flock/Behaviour/Lone Wander")]
 public class LoneWanderBehaviour : FlockBehaviour
 {
-    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
+    [SerializeField] private float wanderVariation;
+    [SerializeField] private float speed;
+    [SerializeField] private float distance;
+    [SerializeField] private float radius = 0.1f;
+
+    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock, float time)
     {
-        Vector3 velocity = new Vector3(0, 0, 0);
+        LoneFlock loneFlock = (LoneFlock)flock;
+
+        if(loneFlock.SetWanderTimer(time)) {
+            loneFlock.SetWanderStart(agent.Kinematics.LinearVel);
+            Vector3 variation = new Vector3();
+            variation.x = Random.Range(-wanderVariation, wanderVariation);
+            variation.y = Random.Range(-wanderVariation, wanderVariation);
+            variation.z = Random.Range(-wanderVariation, wanderVariation);
+            loneFlock.SetWanderVariation(variation);
+        }
+
+        Vector3 velocity = Vector3.Lerp(loneFlock.GetWanderStart(), agent.Kinematics.LinearVel + loneFlock.GetWanderVariation(), loneFlock.GetWanderTimer()/loneFlock.GetWanderDelay());
+
         return velocity;
     }
 }

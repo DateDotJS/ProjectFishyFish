@@ -64,7 +64,7 @@ public class Flock : MonoBehaviour
             agent.GetNearbyObjects(neighbourRadius);
             agent.GetNearbyPredators(targetRadius);
 
-            Vector3 velocity = this.behaviour.CalculateMove(agent, agent.Context, this);
+            Vector3 velocity = this.behaviour.CalculateMove(agent, agent.Context, this, Time.deltaTime);
             velocity *= this.driveFactor;
             if (velocity.sqrMagnitude > this.squareMaxSpeed)
             {
