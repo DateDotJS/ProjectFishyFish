@@ -2,9 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FishType
+{
+    SmallFish,
+    BigFish,
+    RedFish,
+    BlueFish,
+    GreenFish, 
+    PurpleFish,
+}
+
 public class Fish : MonoBehaviour
 {
     // stamina / recovery (longterm and shortterm)
+    public FishType FishType;
+    public Food food;
 
     [Header("Movement Physics")]
     [SerializeField] private float drag;
@@ -15,7 +27,10 @@ public class Fish : MonoBehaviour
     private Vector3 lastPos;
     private bool collidedToWall = false;
     
-    private void Awake() => kinematic = new Kinematic();
+    private void Awake() {
+        this.kinematic = new Kinematic();
+        this.food = GetComponent<Food>();
+    }
 
     void Update()
     {

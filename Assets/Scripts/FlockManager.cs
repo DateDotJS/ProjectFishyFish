@@ -25,6 +25,12 @@ public class FlockManager : MonoBehaviour
 
     private void CheckFlockDrawDistance(Flock flock)
     {
+        if (flock is null)
+        {
+            this.flocks.RemoveAll(flock => flock is null);
+            return;
+        }
+
         var distance = Vector3.Distance(flock.transform.position, player.transform.position);
 
         if (distance > this.drawDistance && flock.gameObject.activeSelf)

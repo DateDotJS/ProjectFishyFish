@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6050451380156666776}
   - component: {fileID: 7807601280870307289}
   - component: {fileID: 9213136015135082077}
+  - component: {fileID: 7036861630010365296}
   m_Layer: 0
   m_Name: Anchovy Base Base
   m_TagString: FishFlocker
@@ -59,6 +60,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724ad1dfd7a03ea4492a63fb8000cdc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7036861630010365296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6824253108698955525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923d5562e8e07574b886e2bb8a4f70b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 0
+  Weight: 0
+  DangerLevel: 0
+  Composition: []
+  FishType: 2
 --- !u!1001 &2673016110723747014
 PrefabInstance:
   m_ObjectHideFlags: 0
