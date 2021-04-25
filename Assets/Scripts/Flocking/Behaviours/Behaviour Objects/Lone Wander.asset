@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23415ea6b3c5902439c1697b75f4be99, type: 3}
-  m_Name: Lone Wandering
+  m_Script: {fileID: 11500000, guid: 49f351428f56d77438cfd60e66a27be1, type: 3}
+  m_Name: Lone Wander
   m_EditorClassIdentifier: 
-  Behaviours:
-  - {fileID: 11400000, guid: d3e7eb55521fb9041be4b41664c4d0d5, type: 2}
-  - {fileID: 11400000, guid: d11d2415b8fcf994ea9031076a0526c9, type: 2}
-  Weights:
-  - 3
-  - 1
+  wanderVariation: 5
+  speed: 1
+  distance: 0
+  radius: 0.1

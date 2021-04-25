@@ -39,6 +39,7 @@ public class Predator : MonoBehaviour
         blindSpotThreshold = 180.0f - (blindSpotAngle / 2);
 
         flock = GetComponent<LoneFlock>();
+        flock.SetBehaviour(wanderBehaviour);
     }
 
     private void FixedUpdate()
@@ -65,16 +66,16 @@ public class Predator : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRadius);
 
         // Draw blindspot
-        Gizmos.color = Color.green;
-        float x = sightRadius * Mathf.Cos((blindSpotAngle / 2) * Mathf.Deg2Rad) + transform.position.x;
-        float y = sightRadius * Mathf.Sin((blindSpotAngle / 2) * Mathf.Deg2Rad) + transform.position.y;
-        float z = transform.position.z - sightRadius;
-        Gizmos.DrawLine(transform.position, new Vector3(x/2, y, z));
-        Gizmos.DrawLine(transform.position, new Vector3(-x/2, y, z));
-        Gizmos.DrawLine(transform.position, new Vector3(x/2, -y, z));
-        Gizmos.DrawLine(transform.position, new Vector3(-x/2, -y, z));
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, y, z));
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, -y, z));
+        //Gizmos.color = Color.green;
+        //float x = sightRadius * Mathf.Cos((blindSpotAngle / 2) * Mathf.Deg2Rad) + transform.forward.x;
+        //float y = sightRadius * Mathf.Sin((blindSpotAngle / 2) * Mathf.Deg2Rad) + transform.forward.y;
+        //float z = transform.forward.z - sightRadius;
+        //Gizmos.DrawLine(transform.position, new Vector3(x/2, y, z));
+        //Gizmos.DrawLine(transform.position, new Vector3(-x/2, y, z));
+       // Gizmos.DrawLine(transform.position, new Vector3(x/2, -y, z));
+        //Gizmos.DrawLine(transform.position, new Vector3(-x/2, -y, z));
+        //Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, y, z));
+        //Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, -y, z));
     }
 
     /* Chooses the closest valid Prey target.
@@ -86,8 +87,7 @@ public class Predator : MonoBehaviour
         float minDistance = Mathf.Infinity;
 
         for (int i = 0; i < nbObservedFish; i++) {
-            // TODO: Check if fish is a prey
-            if(observedFish[i].gameObject != gameObject && true) {
+            if(observedFish[i].gameObject != gameObject && !observedFish[i].gameObject.CompareTag("Predator")) {
                 Vector3 preyPosition = observedFish[i].transform.position;
                 if (!IsPositionInBlindSpot(preyPosition)) {
                     float distance = Vector3.Distance(transform.position, preyPosition);
