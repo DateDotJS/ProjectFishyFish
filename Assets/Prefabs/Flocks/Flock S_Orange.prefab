@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7861103585873618224
+--- !u!1001 &4637316343953756121
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,16 +8,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3640181497553391692, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
-      propertyPath: maxSpeed
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3640181497553391692, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: agentPrefab
       value: 
-      objectReference: {fileID: 5785397070361678851, guid: 562805fa9aee7e643b5b25801a5938d3, type: 3}
+      objectReference: {fileID: 6043564122558494677, guid: 733a75052ae0dbd44a1c2401cec94809, type: 3}
     - target: {fileID: 3640181497553391692, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: startingCount
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_RootOrder
@@ -25,15 +21,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 47.313366
+      value: 49.25456
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.044878
+      value: 15.954468
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 204.6011
+      value: 257.06027
       objectReference: {fileID: 0}
     - target: {fileID: 4585538541988654793, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -65,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8529792793128531049, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
       propertyPath: m_Name
-      value: Flock M_Green
+      value: Flock S_Orange
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eae6f85c36c98e45b6279722addc27d, type: 3}
