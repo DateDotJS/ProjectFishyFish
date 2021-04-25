@@ -59,5 +59,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Anchovy Pink
       objectReference: {fileID: 0}
+    - target: {fileID: 7036861630010365296, guid: 23794a2d362c90e4cb31b87cd3e02c1e, type: 3}
+      propertyPath: FishType
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23794a2d362c90e4cb31b87cd3e02c1e, type: 3}

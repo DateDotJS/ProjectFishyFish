@@ -9,8 +9,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Fish Movement")]
-    [SerializeField] private float minForwardSpeed = 3f;
-    [SerializeField] private float maxForwardSpeed = 5f;
+    [SerializeField] public float MinForwardSpeed = 3f;
+    [SerializeField] public float MaxForwardSpeed = 5f;
 
     [SerializeField] private float maxSideRotation = 0.02f;
     [SerializeField] private float maxPitchRotation = 0.01f;
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         var mouseY = Input.GetAxis("Mouse Y");
         var mouseX = Input.GetAxis("Mouse X");
 
-        var deltaMovement = transform.forward * (forwardMovement ? maxForwardSpeed : minForwardSpeed)
+        var deltaMovement = transform.forward * (forwardMovement ? MaxForwardSpeed : MinForwardSpeed)
             + mouseX * transform.right
             + mouseY * transform.up;
 

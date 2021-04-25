@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6981497636751597881}
   - component: {fileID: 143460502596618419}
   - component: {fileID: 3465534269568833347}
+  - component: {fileID: 4961058879856235396}
   m_Layer: 0
   m_Name: Red Flock Agent
   m_TagString: Untagged
@@ -109,3 +110,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724ad1dfd7a03ea4492a63fb8000cdc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4961058879856235396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4673872090234131110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923d5562e8e07574b886e2bb8a4f70b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 10
+  Weight: 10
+  DangerLevel: 5
+  Composition: []
