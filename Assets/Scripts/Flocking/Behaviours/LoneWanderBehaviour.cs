@@ -10,11 +10,11 @@ public class LoneWanderBehaviour : FlockBehaviour
     [SerializeField] private float distance;
     [SerializeField] private float radius = 0.1f;
 
-    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock, float time)
+    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
         LoneFlock loneFlock = (LoneFlock)flock;
 
-        if(loneFlock.SetWanderTimer(time)) {
+        if(loneFlock.SetWanderTimer(Time.deltaTime)) {
             loneFlock.SetWanderStart(agent.Kinematics.LinearVel);
             Vector3 variation = new Vector3();
             variation.x = Random.Range(-wanderVariation, wanderVariation);

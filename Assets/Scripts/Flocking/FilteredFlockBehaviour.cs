@@ -6,7 +6,7 @@ public abstract class FilteredFlockBehaviour : FlockBehaviour
 {
     public ContextFilter filter;
 
-    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock, float time)
+    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
         List<Transform> filteredContext = (filter is null) ? context : filter.Filter(agent, context);
         return CalculateFilteredMove(agent, filteredContext, flock);
