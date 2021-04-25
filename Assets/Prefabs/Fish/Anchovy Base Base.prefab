@@ -60,6 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724ad1dfd7a03ea4492a63fb8000cdc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstacleUpdateDelay: 1
+  rotationSpeed: 5
 --- !u!114 &7036861630010365296
 MonoBehaviour:
   m_ObjectHideFlags: 0
