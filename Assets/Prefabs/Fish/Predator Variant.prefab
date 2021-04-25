@@ -43,8 +43,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sightUpdateDelay: 2
-  sightRadius: 20
+  sightRadius: 50
+  targetRadius: 40
   blindSpotAngle: 220
+  pursueDelay: 2
   maxObservablePreys: 50
   pursueBehaviour: {fileID: 11400000, guid: 19e05dad621ffd347b070cd61501e0f6, type: 2}
   wanderBehaviour: {fileID: 11400000, guid: 46c1e77bbd1864f4784c6b12a23f4f92, type: 2}
@@ -102,7 +104,7 @@ MonoBehaviour:
   Weight: 0
   DangerLevel: 0
   Composition: []
-  FishType: 0
+  FishType: 1
 --- !u!1001 &5456982114256361200
 PrefabInstance:
   m_ObjectHideFlags: 0
