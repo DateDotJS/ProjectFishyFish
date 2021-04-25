@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float lookAngleBounds = 85f;
 
     [Header("Level Barrier")]
-    [Tooltip("Pass in a water current object that will follow and act as a level barrier")]
-    [SerializeField] private Transform currentBarrier;
+    [Tooltip("Pass in a water current object that will follow the player and act as a level barrier")]
+    [SerializeField] private Transform ceilingCurrentPrefab;
     public float ceilingHeight;
 
     [Header("Particles")]
@@ -36,11 +36,18 @@ public class PlayerController : MonoBehaviour
     private readonly int isSprintingParaHash = Animator.StringToHash("IsSprinting");
 
     private Fish fish;
+    private ParticleSystem.MainModule particleMainSettings;
+    private ParticleSystem.EmissionModule particleEmissionSettings;
 
     private void Awake()
     {
         fish = GetComponent<Fish>();
         animator = GetComponent<Animator>();
+
+        particleMainSettings = swimmingBubbles.main;
+        particleEmissionSettings = swimmingBubbles.emission;
+
+        ceilingCurrentPrefab = Instantiate(ceilingCurrentPrefab, Vector3.zero, ceilingCurrentPrefab.rotation);
     }
 
     void Update() => UpdateMovement();
@@ -73,11 +80,8 @@ public class PlayerController : MonoBehaviour
         animator.SetBool(isSprintingParaHash, forwardMovement);
 
         // play particles if fish is swimming
-        if (deltaMovement != Vector3.zero)
+        if (swimmingBubbles != null && deltaMovement != Vector3.zero)
         {
-            var particleMainSettings = swimmingBubbles.main;
-            var particleEmissionSettings = swimmingBubbles.emission;
-
             if (forwardMovement) { // if fast swimming
                 particleMainSettings.startSpeed = fastSwimParticleSpeed;
                 particleEmissionSettings.rateOverTime = fastSwimEmissionRate;
@@ -90,19 +94,16 @@ public class PlayerController : MonoBehaviour
             if (!swimmingBubbles.isPlaying) 
                 swimmingBubbles.Play();
         }
-        else {
-            swimmingBubbles.Stop();
-         }
 
         // Let the level barrier follow the player, preventing them from rising a certain level
         // until they evolve/become bigger
-        if (currentBarrier != null)
-            currentBarrier.position = new Vector3(transform.position.x, ceilingHeight, transform.position.z);
+        if (ceilingCurrentPrefab != null)
+            ceilingCurrentPrefab.position = new Vector3(transform.position.x, ceilingHeight, transform.position.z);
     }
 
     public void PlayEatingFX()
     {
-        if (!eatingBubbles.isPlaying)
+        if (eatingBubbles != null && !eatingBubbles.isPlaying)
             eatingBubbles.Play();
     }
 
