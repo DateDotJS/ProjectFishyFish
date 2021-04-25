@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FlockState
+{
+    Chillin,
+    PredatorPresence,
+    PredatorChase,
+    PredatorAttack
+}
+
 public class Flock : MonoBehaviour
 {
     [SerializeField] private FlockAgent agentPrefab;
@@ -27,6 +35,14 @@ public class Flock : MonoBehaviour
     protected float squareNeighbourRadius;
     public float SquareAvoidanceRadius { get; set; }
 
+    private Animator animator;
+    private FlockState flockState = FlockState.Chillin;
+
+    private GameObject predator;
+    [SerializeField] private float minPredatorPresenceDistance;
+    [SerializeField] private float minPredatorChaseDistance;
+    [SerializeField] private float minPredatorAttackDistance;
+
     private FlockManager flockManager;
 
     private void Awake()
@@ -36,6 +52,8 @@ public class Flock : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         this.squareMaxSpeed = this.maxSpeed * this.maxSpeed;
         this.squareNeighbourRadius = this.neighbourRadius * this.neighbourRadius;
         SquareAvoidanceRadius = this.squareNeighbourRadius * this.avoidanceRadiusMultiplier * this.avoidanceRadiusMultiplier;
@@ -59,18 +77,57 @@ public class Flock : MonoBehaviour
 
     void Update()
     {
+        float flockPredatorDistance = float.MaxValue;
+
+        if (predator != null)
+            flockPredatorDistance = Vector3.Distance(this.transform.position, predator.transform.position);
+
+        switch (this.flockState)
+        {
+            case FlockState.PredatorPresence:
+                if (flockPredatorDistance <= this.minPredatorChaseDistance)
+                {
+                    AlertFlockOfPredatorChase();
+                }
+                else if (flockPredatorDistance > this.minPredatorPresenceDistance)
+                {
+                    GoBackToChillin();
+                }
+                break;
+            case FlockState.PredatorChase:
+                if (flockPredatorDistance <= this.minPredatorAttackDistance)
+                {
+                    AlertFlockOfPredatorAttack();
+                }
+                else if (flockPredatorDistance > this.minPredatorChaseDistance)
+                {
+                    AlertFlockOfPredatorPresence();
+                }
+                break;
+            case FlockState.PredatorAttack:
+                break;
+        }
+
         foreach (FlockAgent agent in this.agents)
         {
             agent.GetNearbyObjects(neighbourRadius);
             agent.GetNearbyPredators(targetRadius);
 
-            Vector3 velocity = this.behaviour.CalculateMove(agent, agent.Context, this, Time.deltaTime);
+
+            if (agent.PredatorList.Count > 0 && this.flockState == FlockState.Chillin)
+            {
+                // For now, get the first one on the list
+                predator = agent.PredatorList[0].gameObject;
+                AlertFlockOfPredatorPresence();
+            }
+
+            Vector3 velocity = this.behaviour.CalculateMove(agent, agent.Context, this);
             velocity *= this.driveFactor;
             if (velocity.sqrMagnitude > this.squareMaxSpeed)
             {
                 velocity = velocity.normalized * this.maxSpeed;
             }
-            
+
             agent.Kinematics.LinearVel = velocity;
             agent.Move();
         }
@@ -78,17 +135,19 @@ public class Flock : MonoBehaviour
 
     public void ChangeFlockSpeed(float newSpeed)
     {
-        maxSpeed = newSpeed;
-    }
-
-    public float GetFlockSpeed()
-    {
-        return maxSpeed;
+        this.maxSpeed = newSpeed;
+        this.squareMaxSpeed = this.maxSpeed * this.maxSpeed;
     }
 
     public void SetBehaviour(FlockBehaviour behaviour)
     {
         this.behaviour = behaviour;
+    }
+
+    public void ChangeNeighbourRadius(float newRadius)
+    {
+        this.squareNeighbourRadius = this.neighbourRadius * this.neighbourRadius;
+        SquareAvoidanceRadius = this.squareNeighbourRadius * this.avoidanceRadiusMultiplier * this.avoidanceRadiusMultiplier;
     }
 
     public void RemoveAgent(FlockAgent agent)
@@ -111,5 +170,36 @@ public class Flock : MonoBehaviour
             }
         }
         return neighbourAgents;
+    }
+
+    public void ChangeFlockState(FlockState newState) => this.flockState = newState;
+    public float GetFlockSpeed() => maxSpeed;
+    public float GetNeighbourRadius() => this.neighbourRadius;
+    public List<FlockAgent> GetAgents() => this.agents;
+    public GameObject GetCurrentPredator() => this.predator;
+    public FlockBehaviour GetFlockBehaviour() => this.behaviour;
+
+    void GoBackToChillin()
+    {
+        this.flockState = FlockState.Chillin;
+        animator.SetTrigger("isChillin");
+    }
+
+    void AlertFlockOfPredatorPresence()
+    {
+        this.flockState = FlockState.PredatorPresence;
+        animator.SetTrigger("isPredatorPresent");
+    }
+
+    void AlertFlockOfPredatorChase()
+    {
+        this.flockState = FlockState.PredatorChase;
+        animator.SetTrigger("isPredatorChasing");
+    }
+
+    void AlertFlockOfPredatorAttack()
+    {
+        this.flockState = FlockState.PredatorAttack;
+        animator.SetTrigger("isPredatorAttacking");
     }
 }

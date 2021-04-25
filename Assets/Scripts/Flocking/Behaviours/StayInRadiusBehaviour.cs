@@ -11,7 +11,7 @@ public class StayInRadiusBehaviour : FlockBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float radiusThreshold = 0.9f;
 
-    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock, float time)
+    public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
         center = flock.transform.position;
         
