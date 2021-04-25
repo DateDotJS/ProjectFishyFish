@@ -31,6 +31,7 @@ public class Predator : MonoBehaviour
     private float blindSpotThreshold;
 
     private LoneFlock flock;
+    private FlockAgent self;
 
     private void Awake()
     {
@@ -50,6 +51,7 @@ public class Predator : MonoBehaviour
 
         flock = GetComponent<LoneFlock>();
         flock.SetBehaviour(wanderBehaviour);
+        self = GetComponent<FlockAgent>();
     }
 
     private void FixedUpdate()
@@ -140,6 +142,10 @@ public class Predator : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("FishFlocker"))
             CollideWithFlockAgent(collision.gameObject.GetComponent<FlockAgent>());
+
+        if (collision.gameObject.CompareTag("Wall")) {
+            //print("wall!");
+        }
     }
 
     private void CollideWithFlockAgent(FlockAgent flockAgent)

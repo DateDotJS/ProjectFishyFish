@@ -74,7 +74,6 @@ MonoBehaviour:
   minPredatorChaseDistance: 0
   minPredatorAttackDistance: 0
   wanderDelay: 2
-  pursueDelay: 1
 --- !u!114 &1328052390
 MonoBehaviour:
   m_ObjectHideFlags: 0
