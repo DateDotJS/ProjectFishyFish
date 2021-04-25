@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 608.80835, g: 762.56104, b: 985.41504, a: 1}
+  m_IndirectSpecularColor: {r: 607.7272, g: 761.2229, b: 983.6255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9660,6 +9660,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 351508415}
     m_Modifications:
+    - target: {fileID: 1328052389, guid: b7f6763287adeaa4d9dba82d0ab514bf, type: 3}
+      propertyPath: pursueDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1315195297474275871, guid: b7f6763287adeaa4d9dba82d0ab514bf, type: 3}
       propertyPath: m_Name
       value: Predator Variant

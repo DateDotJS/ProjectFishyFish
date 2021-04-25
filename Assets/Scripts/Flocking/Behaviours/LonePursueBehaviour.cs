@@ -11,11 +11,13 @@ public class LonePursueBehaviour : FlockBehaviour
 
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-        if(((LoneFlock)flock).GetTarget() == null) {
+        LoneFlock loneFlock = (LoneFlock)flock;
+
+        if (loneFlock.GetTarget() == null) {
             return new Vector3(0, 0, 0);
         }
 
-        Vector3 direction = ((LoneFlock)flock).GetTarget().transform.position - agent.transform.position;
+        Vector3 direction = loneFlock.GetTarget().transform.position - agent.transform.position;
         Vector3 velocity = new Vector3(0, 0, 0);
 
         if (direction.magnitude < radius) {
@@ -23,7 +25,7 @@ public class LonePursueBehaviour : FlockBehaviour
         }
 
         velocity = direction / timeToTarget;
-        if(velocity.magnitude > maxSpeed) {
+        if (velocity.magnitude > maxSpeed) {
             velocity = velocity.normalized * maxSpeed;
         }
 

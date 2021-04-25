@@ -8,7 +8,9 @@ public class Predator : MonoBehaviour
 {
     [SerializeField] private float sightUpdateDelay;
     [SerializeField] private float sightRadius;
+    [SerializeField] private float targetRadius;
     [SerializeField] private float blindSpotAngle;
+    [SerializeField] private float pursueDelay;
     [SerializeField] private int maxObservablePreys;
     [SerializeField] private FlockBehaviour pursueBehaviour;
     [SerializeField] private FlockBehaviour wanderBehaviour;
@@ -19,6 +21,8 @@ public class Predator : MonoBehaviour
     static private int fishLayerMask;
 
     private float sightTimer;
+    private float pursueTimer;
+    private bool isOnPursueBreak;
 
     private Collider[] observedFish;
     private int nbObservedFish;
@@ -35,6 +39,8 @@ public class Predator : MonoBehaviour
         fishLayerMask = LayerMask.GetMask("Fish");
 
         sightTimer = sightUpdateDelay;
+        pursueTimer = 0;
+        isOnPursueBreak = false;
 
         observedFish = new Collider[maxObservablePreys];
         nbObservedFish = 0;
@@ -51,7 +57,15 @@ public class Predator : MonoBehaviour
         // Look for fishes
         sightTimer += Time.fixedDeltaTime;
 
-        if (ChooseTarget()) {
+        if(isOnPursueBreak) {
+            pursueTimer += Time.fixedDeltaTime;
+
+            if(pursueTimer >= pursueDelay) {
+                isOnPursueBreak = false;
+            }
+        }
+
+        if (ChooseTarget() && !isOnPursueBreak) {
             flock.SetTarget(observedFish[targetedPrey].gameObject);
             flock.SetBehaviour(pursueBehaviour);
         } else {
@@ -85,6 +99,11 @@ public class Predator : MonoBehaviour
             sightTimer = 0.0f;
 
             nbObservedFish = Physics.OverlapSphereNonAlloc(transform.position, sightRadius, observedFish, fishLayerMask);
+        }
+
+        if(observedFish[targetedPrey] != null 
+            && Vector3.Distance(observedFish[targetedPrey].transform.position, transform.position) <= targetRadius) {
+            return true;
         }
 
         int chosenTarget = -1;
@@ -136,5 +155,8 @@ public class Predator : MonoBehaviour
     {
         flockAgent.DestroyAgent();
         sightTimer = sightUpdateDelay;
+        targetedPrey = 0;
+        isOnPursueBreak = true;
+        pursueTimer = 0;
     }
 }
