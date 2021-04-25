@@ -90,4 +90,9 @@ public class Flock : MonoBehaviour
     {
         this.behaviour = behaviour;
     }
+
+    public void RemoveAgent(FlockAgent agent)
+    {
+        agents.Remove(agent);
+    }
 }

@@ -48,6 +48,12 @@ public class FlockAgent : MonoBehaviour
         }
     }
 
+    public void DestroyAgent()
+    {
+        AgentFlock.RemoveAgent(this);
+        Destroy(gameObject);
+    }
+
     /// <summary>
     /// Stores nearby predators to the PredatorList
     /// </summary>
