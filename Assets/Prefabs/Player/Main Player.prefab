@@ -88,8 +88,15 @@ MonoBehaviour:
   maxForwardSpeed: 15
   maxSideRotation: 0.02
   maxPitchRotation: 0.01
+  lookAngleBounds: 85
   currentBarrier: {fileID: 0}
   ceilingHeight: 75
+  swimmingBubbles: {fileID: 870186784}
+  swimParticleSpeed: 0.5
+  swimEmissionRate: 0.3
+  fastSwimParticleSpeed: 3
+  fastSwimEmissionRate: 5
+  eatingBubbles: {fileID: 774721902}
 --- !u!114 &687587110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,8 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drag: 0.8
-  swimmingBubbles: {fileID: 870186784}
-  eatinggBubbles: {fileID: 774721902}
 --- !u!114 &4025994969273499443
 MonoBehaviour:
   m_ObjectHideFlags: 0

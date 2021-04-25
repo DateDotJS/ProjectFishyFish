@@ -6,7 +6,7 @@ using UnityEngine;
 public class FastAvoid : FilteredFlockBehaviour
 {
     private bool speedChanged = false;
-    private float extraSpeed = 2.4f;
+    private float extraSpeed = 4.4f;
     
     public override Vector3 CalculateFilteredMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
