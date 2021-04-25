@@ -14,7 +14,7 @@ public class Predator : MonoBehaviour
     [SerializeField] private FlockBehaviour wanderBehaviour;
 
     private readonly string FISH_LAYER = "Fish";
-    private int fishLayerMask;
+    static private int fishLayerMask;
 
     private float sightTimer;
 

@@ -99,4 +99,17 @@ public class Flock : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public List<Collider> GetAgentsWithinRange(FlockAgent self, Vector3 position, float radius)
+    {
+        List<Collider> neighbourAgents = new List<Collider>();
+        foreach(FlockAgent agent in agents) {
+            if(agent != self) {
+                if(Vector3.Distance(position, agent.transform.position) <= radius) {
+                    neighbourAgents.Add(agent.gameObject.GetComponent<Collider>());
+                }
+            }
+        }
+        return neighbourAgents;
+    }
 }

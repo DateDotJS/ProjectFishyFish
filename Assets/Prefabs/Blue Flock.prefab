@@ -48,5 +48,6 @@ MonoBehaviour:
   startingCount: 250
   driveFactor: 10
   maxSpeed: 5
-  neighbourRadius: 2.5
+  neighbourRadius: 10
+  targetRadius: 50
   avoidanceRadiusMultiplier: 0.75
