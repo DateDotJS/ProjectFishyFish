@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float swimEmissionRate;
     [SerializeField] private float fastSwimParticleSpeed;
     [SerializeField] private float fastSwimEmissionRate;
-    [SerializeField] private ParticleSystem eatingBubbles;
 
     [Header("Animator")]
     private Animator animator;
@@ -99,12 +98,6 @@ public class PlayerController : MonoBehaviour
         // until they evolve/become bigger
         if (ceilingCurrentPrefab != null)
             ceilingCurrentPrefab.position = new Vector3(transform.position.x, ceilingHeight, transform.position.z);
-    }
-
-    public void PlayEatingFX()
-    {
-        if (eatingBubbles != null && !eatingBubbles.isPlaying)
-            eatingBubbles.Play();
     }
 
     private bool IsTooPitched(Quaternion newRotation)

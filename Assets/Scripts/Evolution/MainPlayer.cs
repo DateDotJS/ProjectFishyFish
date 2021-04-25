@@ -12,6 +12,7 @@ public class MainPlayer : MonoBehaviour
     public List<FishTypeRequirement> consumedFishAmounts;
 
     [SerializeField] private List<EvolutionMilestone> milestones;
+    [SerializeField] private ParticleSystem eatingBubbles;
 
     private List<FishScore> fishscores;
     private Food food;
@@ -160,6 +161,7 @@ public class MainPlayer : MonoBehaviour
             correspondingScore.SetScore(entry.Amount);
 
         flockAgent.DestroyAgent();
+        PlayEatingFX();
     }
 
     public void DisplayMilestoneMessage(string message)
@@ -177,5 +179,11 @@ public class MainPlayer : MonoBehaviour
         this.milestoneDisplay.enabled = false;
 
         yield return null;
+    }
+
+    private void PlayEatingFX()
+    {
+        if (eatingBubbles != null && !eatingBubbles.isPlaying)
+            eatingBubbles.Play();
     }
 }
