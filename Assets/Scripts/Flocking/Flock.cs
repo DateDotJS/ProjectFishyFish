@@ -82,31 +82,32 @@ public class Flock : MonoBehaviour
         if (predator != null)
             flockPredatorDistance = Vector3.Distance(this.transform.position, predator.transform.position);
 
-        switch (this.flockState)
-        {
-            case FlockState.PredatorPresence:
-                if (flockPredatorDistance <= this.minPredatorChaseDistance)
-                {
-                    AlertFlockOfPredatorChase();
-                }
-                else if (flockPredatorDistance > this.minPredatorPresenceDistance)
-                {
-                    GoBackToChillin();
-                }
-                break;
-            case FlockState.PredatorChase:
-                if (flockPredatorDistance <= this.minPredatorAttackDistance)
-                {
-                    AlertFlockOfPredatorAttack();
-                }
-                else if (flockPredatorDistance > this.minPredatorChaseDistance)
-                {
-                    AlertFlockOfPredatorPresence();
-                }
-                break;
-            case FlockState.PredatorAttack:
-                break;
-        }
+        if(!this.transform.CompareTag("Predator"))
+            switch (this.flockState)
+            {
+                case FlockState.PredatorPresence:
+                    if (flockPredatorDistance <= this.minPredatorChaseDistance)
+                    {
+                        AlertFlockOfPredatorChase();
+                    }
+                    else if (flockPredatorDistance > this.minPredatorPresenceDistance)
+                    {
+                        GoBackToChillin();
+                    }
+                    break;
+                case FlockState.PredatorChase:
+                    if (flockPredatorDistance <= this.minPredatorAttackDistance)
+                    {
+                        AlertFlockOfPredatorAttack();
+                    }
+                    else if (flockPredatorDistance > this.minPredatorChaseDistance)
+                    {
+                        AlertFlockOfPredatorPresence();
+                    }
+                    break;
+                case FlockState.PredatorAttack:
+                    break;
+            }
 
         foreach (FlockAgent agent in this.agents)
         {
@@ -114,12 +115,13 @@ public class Flock : MonoBehaviour
             agent.GetNearbyPredators(targetRadius);
 
 
-            if (agent.PredatorList.Count > 0 && this.flockState == FlockState.Chillin)
-            {
-                // For now, get the first one on the list
-                predator = agent.PredatorList[0].gameObject;
-                AlertFlockOfPredatorPresence();
-            }
+            if(!this.transform.CompareTag("Predator"))
+                if (agent.PredatorList.Count > 0 && this.flockState == FlockState.Chillin)
+                {
+                    // For now, get the first one on the list
+                    predator = agent.PredatorList[0].gameObject;
+                    AlertFlockOfPredatorPresence();
+                }
 
             Vector3 velocity = this.behaviour.CalculateMove(agent, agent.Context, this);
             velocity *= this.driveFactor;

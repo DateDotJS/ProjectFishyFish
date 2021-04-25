@@ -16,7 +16,7 @@ public class HerdBehaviour : FilteredFlockBehaviour
             //Reset speed to initial one
             if (speedChanged == true)
             {
-                flock.ChangeFlockSpeed(flock.GetFlockSpeed() / speedFactor);
+                //flock.ChangeFlockSpeed(flock.GetFlockSpeed() / speedFactor);
                 speedChanged = false;
             }
 
@@ -31,7 +31,7 @@ public class HerdBehaviour : FilteredFlockBehaviour
        if ( (angle > 0 && angle < 45) || (angle < 0 && angle > -45) )
             if (speedChanged == false)
             {
-                flock.ChangeFlockSpeed(flock.GetFlockSpeed() * speedFactor);
+                //flock.ChangeFlockSpeed(flock.GetFlockSpeed() * speedFactor);
                 speedChanged = true;
             }
         else if (angle > 45 && angle < 90)
@@ -39,6 +39,6 @@ public class HerdBehaviour : FilteredFlockBehaviour
         else if (angle < -45 && angle > -90)
                 herdMove = agent.transform.position - agent.transform.right * Time.deltaTime * 0.3f;
         
-        return herdMove;
+        return herdMove * (speedChanged ? speedFactor : 1);
     }
 }

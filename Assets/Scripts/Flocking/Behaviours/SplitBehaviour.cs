@@ -17,7 +17,7 @@ public class SplitBehaviour : FilteredFlockBehaviour
             //Reset speed to initial one
             if (speedChanged == true)
             {
-                flock.ChangeFlockSpeed(flock.GetFlockSpeed() / ExtraSpeed);
+                //flock.ChangeFlockSpeed(flock.GetFlockSpeed() / ExtraSpeed);
                 speedChanged = false;
             }
 
@@ -41,7 +41,7 @@ public class SplitBehaviour : FilteredFlockBehaviour
         
         if (speedChanged == false)
         {
-            flock.ChangeFlockSpeed(flock.GetFlockSpeed() * ExtraSpeed);
+            //flock.ChangeFlockSpeed(flock.GetFlockSpeed() * ExtraSpeed);
             speedChanged = true;
         }
         
@@ -50,6 +50,6 @@ public class SplitBehaviour : FilteredFlockBehaviour
         var side = Vector3.Dot(distance, avgPredatorRight);
         splitDirection = avgPredatorRight * ((side < 0 ? -1 : 1) * SplitDistance);
         
-        return splitDirection;
+        return splitDirection * (speedChanged ? ExtraSpeed : 1);
     }
 }

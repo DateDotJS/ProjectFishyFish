@@ -84,7 +84,8 @@ public class FlockAgent : MonoBehaviour
                 continue;
 
             //Currently checking for object with Predator tag
-            if (collider.gameObject.CompareTag("Predator"))
+            Transform other = collider.transform;
+            if (other.CompareTag("Predator") || other.CompareTag("Player"))
             {
                 PredatorList.Add(collider.transform);
             }
