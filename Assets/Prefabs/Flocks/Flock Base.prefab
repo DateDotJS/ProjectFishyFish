@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4585538541988654793}
   - component: {fileID: 3640181497553391692}
+  - component: {fileID: 7289110044944395027}
   m_Layer: 0
-  m_Name: Flock
+  m_Name: Flock Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,9 +45,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agentPrefab: {fileID: 0}
-  behaviour: {fileID: 11400000, guid: 3c1902b3dad09dc47869968c06b49f38, type: 2}
+  behaviour: {fileID: 11400000, guid: 27589a3e88d7ca749b6c39293ea0cfd3, type: 2}
   startingCount: 50
   driveFactor: 10
   maxSpeed: 5
-  neighbourRadius: 1.5
+  neighbourRadius: 2.5
+  targetRadius: 20
   avoidanceRadiusMultiplier: 0.5
+  minPredatorPresenceDistance: 40
+  minPredatorChaseDistance: 30
+  minPredatorAttackDistance: 25
+--- !u!95 &7289110044944395027
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8529792793128531049}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 10b26f9310ed520479bf345faa7623b2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
