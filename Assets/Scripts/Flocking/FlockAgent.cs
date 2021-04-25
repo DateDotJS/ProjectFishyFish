@@ -18,6 +18,8 @@ public class FlockAgent : MonoBehaviour
     private float obstacleUpdateTimer;
     static private int obstacleLayerMask;
 
+    [SerializeField] private float rotationSpeed;
+
     void Start()
     {
         AgentCollider = GetComponent<Collider>();
@@ -32,7 +34,7 @@ public class FlockAgent : MonoBehaviour
 
     public void Move()
     {
-        transform.forward = Kinematics.LinearVel;
+        transform.forward = Vector3.Slerp(transform.forward, Kinematics.LinearVel, Time.deltaTime * rotationSpeed);
         transform.position += Kinematics.LinearVel * Time.deltaTime;
     }
 
@@ -91,6 +93,4 @@ public class FlockAgent : MonoBehaviour
             }
         }
     }
-
-
 }

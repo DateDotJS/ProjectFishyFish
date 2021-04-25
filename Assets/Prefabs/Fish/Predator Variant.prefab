@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleUpdateDelay: 1
+  rotationSpeed: 6
 --- !u!114 &3408910446120177925
 MonoBehaviour:
   m_ObjectHideFlags: 0
