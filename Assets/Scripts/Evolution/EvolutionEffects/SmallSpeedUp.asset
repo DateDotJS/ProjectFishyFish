@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65bf567df4fd67f4188d62de71b74080, type: 3}
   m_Name: SmallSpeedUp
   m_EditorClassIdentifier: 
-  SpeedUpPercentage: 0.2
+  SpeedUpPercentage: 0.15

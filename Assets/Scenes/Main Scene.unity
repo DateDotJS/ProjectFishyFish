@@ -7183,6 +7183,22 @@ PrefabInstance:
       propertyPath: eatingBubbles
       value: 
       objectReference: {fileID: 1351188995}
+    - target: {fileID: 6663208795861102589, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
+      propertyPath: milestones.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6663208795861102589, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
+      propertyPath: milestones.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 09e8dfa85f9865c48b42cb08af089fae, type: 2}
+    - target: {fileID: 6663208795861102589, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
+      propertyPath: milestones.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b1cd029208d5c542aeb19006b5bcc2c, type: 2}
+    - target: {fileID: 6663208795861102589, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
+      propertyPath: milestones.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ba0727cb6ca89348a019b3ebfd56372, type: 2}
     - target: {fileID: 6869262963201373431, guid: 8d1e58963bfab5e418c16980a24460f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0

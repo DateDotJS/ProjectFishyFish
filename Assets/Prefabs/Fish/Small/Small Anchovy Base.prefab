@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5842717667844130413, guid: a6245c742c0780b4a9e74f13176ea0e3, type: 3}
       propertyPath: FishType
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7153389548626837637, guid: a6245c742c0780b4a9e74f13176ea0e3, type: 3}
       propertyPath: m_RootOrder
