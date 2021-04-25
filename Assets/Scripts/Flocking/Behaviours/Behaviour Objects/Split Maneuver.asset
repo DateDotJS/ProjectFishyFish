@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Split Maneuver
   m_EditorClassIdentifier: 
   filter: {fileID: 0}
-  ExtraSpeed: 2.4
+  ExtraSpeed: 5
   SplitDistance: 5
