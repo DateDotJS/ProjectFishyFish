@@ -7,7 +7,7 @@ public class WaterCurrentParticles : MonoBehaviour
 {
     [Tooltip("Emission rate of the particle system.")]
     [SerializeField] private float emissionRate = 50f;
-    [SerializeField] private float speedFactor = 1f;
+    [SerializeField] private float particleSpeedFactor = 1f;
 
     private ParticleSystem particleSystem;
     private WaterCurrent waterCurrent;
@@ -27,7 +27,7 @@ public class WaterCurrentParticles : MonoBehaviour
     {
         particleSystem.Stop();
 
-        var speed = waterCurrent.Velocity.magnitude * speedFactor;
+        var speed = waterCurrent.Velocity.magnitude * particleSpeedFactor;
         var particleMainSettings = this.particleSystem.main;
         var particleEmissionSettings = this.particleSystem.emission;
         

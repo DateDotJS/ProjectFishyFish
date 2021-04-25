@@ -12,17 +12,20 @@ public class Fish : MonoBehaviour
     private Vector3 externalVelocity;
     private Vector3 momentum;
     private Vector3 angularMomentum; // TODO figure out handling angular momentum
-
+    private Vector3 lastPos;
+    private bool collidedToWall = false;
     
     private void Awake() => kinematic = new Kinematic();
 
     void Update()
     {
-        HandlePhysics();
+        lastPos = transform.position;
 
         // Calculate transform with kinematic linear movement + any other force applied
         transform.position = transform.position + (kinematic.LinearVel * Time.deltaTime) + (momentum * Time.deltaTime);
         transform.rotation = kinematic.Orientation;
+
+        HandlePhysics();
     }
 
 
@@ -35,6 +38,10 @@ public class Fish : MonoBehaviour
 
         // calculate drag factor of the momentum
         momentum = momentum * (1 - Time.deltaTime * drag);
+
+        // if collided on a wall, reset to the last position before colliding
+        if (collidedToWall)
+            transform.position = lastPos;
     }
 
 
@@ -54,6 +61,17 @@ public class Fish : MonoBehaviour
 
     #endregion
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+            collidedToWall = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+            collidedToWall = false;
+    }
 
     // FROM UML DIAGRAM ON DIAGRAM.IO
     // ability / unique methods here 
