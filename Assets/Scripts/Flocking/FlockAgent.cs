@@ -18,6 +18,7 @@ public class FlockAgent : MonoBehaviour
     private float obstacleUpdateTimer;
     static private int obstacleLayerMask;
     public int ObstacleLayerMask => obstacleLayerMask;
+    static private int fishLayerMask;
 
     [SerializeField] private float rotationSpeed;
 
@@ -34,6 +35,7 @@ public class FlockAgent : MonoBehaviour
 
         obstacleUpdateTimer = obstacleUpdateDelay;
         obstacleLayerMask = LayerMask.GetMask("Obstacle");
+        fishLayerMask = LayerMask.GetMask("Fish");
     }
 
     public void Move()
@@ -85,7 +87,7 @@ public class FlockAgent : MonoBehaviour
     {
         PredatorList.Clear();
         
-        var targetColliders = Physics.OverlapSphere(transform.position, predatorRadius);
+        var targetColliders = Physics.OverlapSphere(transform.position, predatorRadius, fishLayerMask);
 
         foreach (var collider in targetColliders)
         {
