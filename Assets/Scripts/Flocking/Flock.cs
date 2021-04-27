@@ -43,7 +43,7 @@ public class Flock : MonoBehaviour
     [SerializeField] private float minPredatorChaseDistance;
     [SerializeField] private float minPredatorAttackDistance;
 
-    private FlockManager flockManager;
+    protected FlockManager flockManager;
 
     private void Awake()
     {
@@ -113,7 +113,6 @@ public class Flock : MonoBehaviour
         {
             agent.GetNearbyObjects(neighbourRadius);
             agent.GetNearbyPredators(targetRadius);
-
 
             if(!this.transform.CompareTag("Predator"))
                 if (agent.PredatorList.Count > 0 && this.flockState == FlockState.Chillin)
