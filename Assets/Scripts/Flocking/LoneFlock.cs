@@ -17,6 +17,8 @@ public class LoneFlock : Flock
     {
         wanderTimer = wanderDelay;
         wanderVariation = new Vector3();
+
+        flockManager = FindObjectOfType<FlockManager>();
     }
 
     void Start()
@@ -29,6 +31,8 @@ public class LoneFlock : Flock
         agent.name = ("Self");
         agent.AgentFlock = this;
         this.agents.Add(agent);
+
+        flockManager.AddFlock(this);
     }
 
     public void SetTarget(GameObject o)
