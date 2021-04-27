@@ -114,7 +114,6 @@ public class Flock : MonoBehaviour
             agent.GetNearbyObjects(neighbourRadius);
             agent.GetNearbyPredators(targetRadius);
 
-
             if(!this.transform.CompareTag("Predator"))
                 if (agent.PredatorList.Count > 0 && this.flockState == FlockState.Chillin)
                 {

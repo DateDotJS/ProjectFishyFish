@@ -59,6 +59,11 @@ public class Predator : MonoBehaviour
         // Look for fishes
         sightTimer += Time.fixedDeltaTime;
 
+        if(observedFish[targetedPrey] == null && flock.GetFlockBehaviour() == pursueBehaviour) {
+            flock.SetBehaviour(wanderBehaviour);
+            return;
+        }
+
         if(isOnPursueBreak) {
             pursueTimer += Time.fixedDeltaTime;
 
@@ -103,7 +108,9 @@ public class Predator : MonoBehaviour
             nbObservedFish = Physics.OverlapSphereNonAlloc(transform.position, sightRadius, observedFish, fishLayerMask);
         }
 
-        if(observedFish[targetedPrey] != null 
+        if(observedFish[targetedPrey] != null
+            && observedFish[targetedPrey].gameObject != gameObject
+            && !observedFish[targetedPrey].gameObject.CompareTag("Predator")
             && Vector3.Distance(observedFish[targetedPrey].transform.position, transform.position) <= targetRadius) {
             return true;
         }
@@ -142,10 +149,6 @@ public class Predator : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("FishFlocker"))
             CollideWithFlockAgent(collision.gameObject.GetComponent<FlockAgent>());
-
-        if (collision.gameObject.CompareTag("Wall")) {
-            //print("wall!");
-        }
     }
 
     private void CollideWithFlockAgent(FlockAgent flockAgent)
@@ -164,5 +167,6 @@ public class Predator : MonoBehaviour
         targetedPrey = 0;
         isOnPursueBreak = true;
         pursueTimer = 0;
+        flock.SetBehaviour(wanderBehaviour);
     }
 }
