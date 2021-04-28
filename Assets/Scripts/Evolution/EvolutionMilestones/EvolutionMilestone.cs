@@ -18,6 +18,7 @@ public class EvolutionMilestone : ScriptableObject
     public List<EvolutionMilestoneEffect> Effects;
 
     public string MilestoneMessage; 
+    public string MilestoneSubMessage; 
 
     public void TryApplyMilestone(MainPlayer mainPlayer)
     {
@@ -35,7 +36,7 @@ public class EvolutionMilestone : ScriptableObject
         }
 
         //Debug.Log("Requirements met!");
-        mainPlayer.DisplayMilestoneMessage(MilestoneMessage);
+        mainPlayer.DisplayMilestoneMessage(MilestoneMessage, MilestoneSubMessage);
 
         foreach (var effect in Effects)
             effect.ApplyTo(mainPlayer);

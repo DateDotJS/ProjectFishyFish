@@ -86,8 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfea42a0403e0a745841e6382fc8dee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinForwardSpeed: 5
-  MaxForwardSpeed: 8
+  MinForwardSpeed: 6
+  MaxForwardSpeed: 9
   maxSideRotation: 0.02
   maxPitchRotation: 0.01
   lookAngleBounds: 85
@@ -270,10 +270,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   consumedFishAmounts: []
   milestones:
-  - {fileID: 11400000, guid: 62a0b8781b05b11479c40dfcffee97aa, type: 2}
-  - {fileID: 11400000, guid: a5a4debd2fda5ce499e08dc183e2acec, type: 2}
-  - {fileID: 11400000, guid: 88cea69595e786d4288de4afa9a33836, type: 2}
-  eatingBubbles: {fileID: 0}
+  - {fileID: 11400000, guid: 29297c3d52312cc4699ab57ccb40f4e2, type: 2}
+  - {fileID: 11400000, guid: 54dfbe585736dfc449a70790b65efe3b, type: 2}
+  - {fileID: 11400000, guid: b7996c3f546654f41b491fd317ab3f9a, type: 2}
+  - {fileID: 11400000, guid: 70f15e5dec3031047b3aba5f4562e8c8, type: 2}
+  - {fileID: 11400000, guid: 65053b93cec25864286d426ac92ce13b, type: 2}
+  - {fileID: 11400000, guid: ff7f49d9b2937474888cc912e8869683, type: 2}
+  - {fileID: 11400000, guid: de870a0af3c85214cb73951c11c433fd, type: 2}
+  - {fileID: 11400000, guid: fb472f2703d0b2647ac0c8cee2fdbfb6, type: 2}
+  - {fileID: 11400000, guid: c3511399b6e1f56468ea61828111a7ee, type: 2}
+  - {fileID: 11400000, guid: be93804cdada39341ab9fea232208453, type: 2}
+  - {fileID: 11400000, guid: c26512cfac69fb746b321af64ee6d27e, type: 2}
+  - {fileID: 11400000, guid: 2f36ba38546e2e044a6cc8f5623861d1, type: 2}
+  eatingBubbles: {fileID: 774721902}
+  timeToDisplayMilestoneMessage: 4
+  debugConsumeFish: 1
 --- !u!114 &4126775583544951955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,5 +635,10 @@ PrefabInstance:
 --- !u!4 &774721900 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8794512133385176270, guid: dc298af201b3a614cb3fbeeae6c2678f, type: 3}
+  m_PrefabInstance: {fileID: 8794512133017834914}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &774721902 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8794512133385176268, guid: dc298af201b3a614cb3fbeeae6c2678f, type: 3}
   m_PrefabInstance: {fileID: 8794512133017834914}
   m_PrefabAsset: {fileID: 0}
