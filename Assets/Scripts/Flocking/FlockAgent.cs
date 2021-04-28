@@ -17,6 +17,7 @@ public class FlockAgent : MonoBehaviour
     [SerializeField] private float obstacleUpdateDelay = 1;
     private float obstacleUpdateTimer;
     static private int obstacleLayerMask;
+    public int ObstacleLayerMask => obstacleLayerMask;
 
     [SerializeField] private float rotationSpeed;
 
