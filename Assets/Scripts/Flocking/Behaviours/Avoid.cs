@@ -14,7 +14,7 @@ public class Avoid : FilteredFlockBehaviour
         }
 
         Vector3 avoidanceMove = Vector3.zero;
-        int nThingsToAvoid = 0;
+        var nThingsToAvoid = agent.PredatorList.Count;
         Vector3 agentPosition = agent.transform.position;
         Vector3 avgPredatorPos = Vector3.zero;
         
@@ -22,13 +22,13 @@ public class Avoid : FilteredFlockBehaviour
         {
             Vector3 closestPoint = item.gameObject.GetComponent<Collider>().ClosestPoint(agentPosition);
             
-            avgPredatorPos += closestPoint; //Gets average position of predators
-            
-            nThingsToAvoid++; //Number of predators near
+            avgPredatorPos += closestPoint; // Store total position of predators
         }
 
+        avgPredatorPos /= nThingsToAvoid;
+
         //Direction opposite to predator position
-        avoidanceMove = agentPosition - (-avgPredatorPos/nThingsToAvoid);
+        avoidanceMove = agentPosition - avgPredatorPos/nThingsToAvoid;
         
         return avoidanceMove;
     }

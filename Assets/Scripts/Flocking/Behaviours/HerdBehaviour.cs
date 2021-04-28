@@ -20,7 +20,7 @@ public class HerdBehaviour : FilteredFlockBehaviour
         float angle = Vector3.SignedAngle(predator.forward, agent.transform.position - predator.position, Vector3.up);
 
         if ((angle > 0 && angle < 45) || (angle < 0 && angle > -45))
-            herdMove =  agentPosition - (-predator.transform.position) * speedFactor;
+            herdMove =  (agentPosition - predator.position) * speedFactor;
         else if (angle > 45 && angle < 90)
             herdMove = agentPosition + agent.transform.right;
         else if (angle < -45 && angle > -90)
