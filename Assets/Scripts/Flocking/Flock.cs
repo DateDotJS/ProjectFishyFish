@@ -79,10 +79,10 @@ public class Flock : MonoBehaviour
     {
         float flockPredatorDistance = float.MaxValue;
 
-        if (predator != null)
+        if (this.predator != null)
             flockPredatorDistance = Vector3.Distance(this.transform.position, predator.transform.position);
 
-        if(!this.transform.CompareTag("Predator"))
+        if (!this.transform.CompareTag("Predator"))
             switch (this.flockState)
             {
                 case FlockState.PredatorPresence:
@@ -106,6 +106,10 @@ public class Flock : MonoBehaviour
                     }
                     break;
                 case FlockState.PredatorAttack:
+                    if (flockPredatorDistance > this.minPredatorAttackDistance)
+                    {
+                        AlertFlockOfPredatorChase();
+                    }
                     break;
             }
 
@@ -115,11 +119,11 @@ public class Flock : MonoBehaviour
             if(!transform.CompareTag("Predator"))
                 agent.GetNearbyPredators(targetRadius);
 
-            if(!this.transform.CompareTag("Predator"))
+            if (!this.transform.CompareTag("Predator"))
                 if (agent.PredatorList.Count > 0 && this.flockState == FlockState.Chillin)
                 {
                     // For now, get the first one on the list
-                    predator = agent.PredatorList[0].gameObject;
+                    this.predator = agent.PredatorList[0].gameObject;
                     AlertFlockOfPredatorPresence();
                 }
 
@@ -156,7 +160,8 @@ public class Flock : MonoBehaviour
     {
         agents.Remove(agent);
 
-        if(agents.Count == 0) {
+        if (agents.Count == 0)
+        {
             Destroy(gameObject);
         }
     }
@@ -164,9 +169,12 @@ public class Flock : MonoBehaviour
     public List<Collider> GetAgentsWithinRange(FlockAgent self, Vector3 position, float radius)
     {
         List<Collider> neighbourAgents = new List<Collider>();
-        foreach(FlockAgent agent in agents) {
-            if(agent != self) {
-                if(Vector3.Distance(position, agent.transform.position) <= radius) {
+        foreach (FlockAgent agent in agents)
+        {
+            if (agent != self)
+            {
+                if (Vector3.Distance(position, agent.transform.position) <= radius)
+                {
                     neighbourAgents.Add(agent.gameObject.GetComponent<Collider>());
                 }
             }

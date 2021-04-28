@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6ebad93120d0c449c1c137ad117023, type: 3}
   m_Name: Small Stay in Radius
   m_EditorClassIdentifier: 
-  center: {x: 150.63, y: 41.57, z: 211.4}
-  radius: 80
+  center: {x: 0, y: 0, z: 0}
+  radius: 5
   radiusThreshold: 0.9

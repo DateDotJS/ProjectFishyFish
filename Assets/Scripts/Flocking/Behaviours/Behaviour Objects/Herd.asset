@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Herd
   m_EditorClassIdentifier: 
   filter: {fileID: 0}
-  speedFactor: 1
+  speedFactor: 2
