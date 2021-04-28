@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 687587112}
   - component: {fileID: 6663208795861102589}
   - component: {fileID: 4126775583544951955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4653235087858995963}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CMLookTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6759983340111387388}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CMFollowTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,6 +377,10 @@ PrefabInstance:
     - target: {fileID: 3899557835924574521, guid: 7cc65726c53326344bbc6636fde6dd3a, type: 3}
       propertyPath: m_Name
       value: Swimming Bubbles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3899557835924574521, guid: 7cc65726c53326344bbc6636fde6dd3a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3899557835924574522, guid: 7cc65726c53326344bbc6636fde6dd3a, type: 3}
       propertyPath: m_RootOrder
@@ -506,8 +510,16 @@ PrefabInstance:
       value: anchovy
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f27369738214ef0429b0e34f9440741f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f27369738214ef0429b0e34f9440741f, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: f27369738214ef0429b0e34f9440741f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f27369738214ef0429b0e34f9440741f, type: 3}
@@ -526,6 +538,10 @@ PrefabInstance:
     - target: {fileID: 8794512133385176265, guid: dc298af201b3a614cb3fbeeae6c2678f, type: 3}
       propertyPath: m_Name
       value: Eating Bubbles
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794512133385176265, guid: dc298af201b3a614cb3fbeeae6c2678f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8794512133385176268, guid: dc298af201b3a614cb3fbeeae6c2678f, type: 3}
       propertyPath: lengthInSec

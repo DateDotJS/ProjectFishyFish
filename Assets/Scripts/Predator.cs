@@ -109,8 +109,7 @@ public class Predator : MonoBehaviour
         }
 
         if(observedFish[targetedPrey] != null
-            && observedFish[targetedPrey].gameObject != gameObject
-            && !observedFish[targetedPrey].gameObject.CompareTag("Predator")
+            && observedFish[targetedPrey].gameObject.CompareTag("FishFlocker")
             && Vector3.Distance(observedFish[targetedPrey].transform.position, transform.position) <= targetRadius) {
             return true;
         }
@@ -119,7 +118,7 @@ public class Predator : MonoBehaviour
         float minDistance = Mathf.Infinity;
 
         for (int i = 0; i < nbObservedFish; i++) {
-            if (observedFish[i].gameObject != gameObject && !observedFish[i].gameObject.CompareTag("Predator")) {
+            if (observedFish[i].gameObject.CompareTag("FishFlocker")) {
                 Vector3 preyPosition = observedFish[i].transform.position;
                 if (!IsPositionInBlindSpot(preyPosition)) {
                     float distance = Vector3.Distance(transform.position, preyPosition);
