@@ -18,6 +18,13 @@ public class MainPlayer : MonoBehaviour
     private Food food;
 
     private Text milestoneDisplay;
+    private Text milestoneSubDisplay;
+    private float milestoneDisplayTimer;
+    private bool milestoneDisplayIsDisplayed;
+
+    [SerializeField] private float timeToDisplayMilestoneMessage = 4f;
+    
+    [SerializeField] private bool debugConsumeFish = false;
 
     private void Awake()
     {
@@ -26,10 +33,12 @@ public class MainPlayer : MonoBehaviour
         this.milestoneDisplay = GameObject
             .FindGameObjectWithTag("MilestoneAnnouncement")
             .GetComponent<Text>();
+        this.milestoneSubDisplay = GameObject
+            .FindGameObjectWithTag("MilestoneSub")
+            .GetComponent<Text>();
 
         this.consumedFishAmounts = new List<FishTypeRequirement>();
 
-        // comment out if we decide to save in between game session
         foreach (var milstone in this.milestones)
             milstone.HasActivated = false;
 
@@ -41,29 +50,41 @@ public class MainPlayer : MonoBehaviour
     private void Start()
     {
         this.milestoneDisplay.enabled = false;
+        this.milestoneSubDisplay.enabled = false;
     }
 
     private void Update()
     {
-        // FOR NOW
-        if (Input.GetKeyDown(KeyCode.F))
-            DEBUGConsumeREDFish();
+        if (this.debugConsumeFish)
+            AcceptDebugConsumeFishes();
 
         foreach (var milestone in this.milestones)
             milestone.TryApplyMilestone(this);
     }
 
-    public void DEBUGConsumeREDFish()
+    private void AcceptDebugConsumeFishes()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+            DebugConsumeAFish(FishType.BlueFish);
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+            DebugConsumeAFish(FishType.GreenFish);
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+            DebugConsumeAFish(FishType.OrangeFish);
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            DebugConsumeAFish(FishType.RedFish);
+    }
+
+    public void DebugConsumeAFish(FishType fishType)
     {
         var entry = this.consumedFishAmounts
-            .Where(entry => entry.FishType == FishType.RedFish)
+            .Where(entry => entry.FishType == fishType)
             .FirstOrDefault();
 
         if (entry is null)
         {
             entry = new FishTypeRequirement
             {
-                FishType = FishType.RedFish,
+                FishType = fishType,
                 Amount = 0,
             };
 
@@ -85,22 +106,6 @@ public class MainPlayer : MonoBehaviour
         }
     }
 
-    public void ConsumeFish(Fish fish)
-    {
-        var entry = this.consumedFishAmounts
-            .Where(entry => entry.FishType == fish.FishType)
-            .FirstOrDefault();
-
-        if (entry is null)
-            this.consumedFishAmounts.Add(new FishTypeRequirement
-            {
-                FishType = fish.FishType
-            });
-
-        entry.Amount += 1;
-    }
-
-
     public void UpdateSpeedByPercent(float speedIncreasePercent)
     {
         this.playerController.MinForwardSpeed *= 1f + speedIncreasePercent;
@@ -110,11 +115,6 @@ public class MainPlayer : MonoBehaviour
     public void UpdateSizeByPercent(float sizeIncreasePercent)
     {
         this.transform.localScale *= 1f + sizeIncreasePercent;
-    }
-
-    public void EvolutionUpdate()
-    {
-        throw new System.NotImplementedException();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -164,19 +164,34 @@ public class MainPlayer : MonoBehaviour
         PlayEatingFX();
     }
 
-    public void DisplayMilestoneMessage(string message)
+    public void DisplayMilestoneMessage(string message, string subMessage)
     {
         this.milestoneDisplay.enabled = true;
         this.milestoneDisplay.text = message;
-        
-        StartCoroutine(HideMilestoneMessageIn(2f));
+
+        this.milestoneSubDisplay.enabled = true;
+        this.milestoneSubDisplay.text = subMessage;
+
+        this.milestoneDisplayTimer = this.timeToDisplayMilestoneMessage;
+
+        if (!this.milestoneDisplayIsDisplayed)
+            StartCoroutine(DelayedHideMilestoneMessage());
+
+        this.milestoneDisplayIsDisplayed = true;
     }
 
-    private IEnumerator HideMilestoneMessageIn(float seconds)
+    private IEnumerator DelayedHideMilestoneMessage()
     {
-        yield return new WaitForSeconds(seconds);
+        while (this.milestoneDisplayTimer > 0)
+        {
+            this.milestoneDisplayTimer -= Time.deltaTime;
+            yield return null;
+        }
 
         this.milestoneDisplay.enabled = false;
+        this.milestoneSubDisplay.enabled = false;
+
+        this.milestoneDisplayIsDisplayed = false;
 
         yield return null;
     }
