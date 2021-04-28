@@ -16,21 +16,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 68924d235dd08ae4aa29efe39c362268, type: 2}
   - {fileID: 11400000, guid: f0ff54e5454205f4384c7f29fd07ad38, type: 2}
   - {fileID: 11400000, guid: 528b8a69c3cb7f744b2bbfca510deeee, type: 2}
-  - {fileID: 11400000, guid: efa0282aa3085094788b31346c72883b, type: 2}
-  - {fileID: 11400000, guid: d3e7eb55521fb9041be4b41664c4d0d5, type: 2}
+  - {fileID: 11400000, guid: a4dd496ce33ed56439a3864a120900d0, type: 2}
+  - {fileID: 11400000, guid: a0e8a3773196c564ca335243a13722db, type: 2}
   - {fileID: 11400000, guid: d3f5e0ce6a689fb4b8725e48b4af304e, type: 2}
   - {fileID: 11400000, guid: 34161ca4d999c75468f81000c49c11c5, type: 2}
   - {fileID: 11400000, guid: 40a57ec9b6e7ec447b93e33a89b149d0, type: 2}
   - {fileID: 11400000, guid: ec2871ed9e408b74b90a6501ac015fdb, type: 2}
-  - {fileID: 11400000, guid: a0e8a3773196c564ca335243a13722db, type: 2}
   Weights:
   - 4
   - 1
   - 2
   - 0.1
-  - 3
+  - 10
+  - 0
+  - 0.5
   - 0
   - 0
-  - 0
-  - 0
-  - 50
