@@ -20,12 +20,15 @@ public class FlockAgent : MonoBehaviour
 
     [SerializeField] private float rotationSpeed;
 
+    private Animator animator;
+
     void Start()
     {
         AgentCollider = GetComponent<Collider>();
         Context = new List<Transform>();
         PredatorList = new List<Transform>();
-        
+        animator = GetComponent<Animator>();
+
         Kinematics = new Kinematic();
 
         obstacleUpdateTimer = obstacleUpdateDelay;
@@ -36,6 +39,9 @@ public class FlockAgent : MonoBehaviour
     {
         transform.forward = Vector3.Slerp(transform.forward, Kinematics.LinearVel, Time.deltaTime * rotationSpeed);
         transform.position += Kinematics.LinearVel * Time.deltaTime;
+
+        // Animate fish swimming
+        animator.SetFloat("SwimVelocity", Kinematics.LinearVel.magnitude);
     }
 
 
