@@ -118,7 +118,7 @@ public class Predator : MonoBehaviour
         float minDistance = Mathf.Infinity;
 
         for (int i = 0; i < nbObservedFish; i++) {
-            if (observedFish[i].gameObject.CompareTag("FishFlocker")) {
+            if (observedFish[i] != null && observedFish[i].gameObject.CompareTag("FishFlocker")) {
                 Vector3 preyPosition = observedFish[i].transform.position;
                 if (!IsPositionInBlindSpot(preyPosition)) {
                     float distance = Vector3.Distance(transform.position, preyPosition);
