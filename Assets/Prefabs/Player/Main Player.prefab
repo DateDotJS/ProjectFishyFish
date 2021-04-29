@@ -139,6 +139,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e081a7d079b6cef4dba03b4bad1ad616, type: 3}
   - {fileID: 8300000, guid: e2192e33f7a01424882565131c3c2412, type: 3}
   - {fileID: 8300000, guid: 31dafdd96929d6a4f9891f1f606ec45f, type: 3}
+  eatClips:
+  - {fileID: 8300000, guid: 210564b34ad5df14c9cab763d6c20525, type: 3}
+  - {fileID: 8300000, guid: 1200e7c646b6a364b8f8e2f97728f995, type: 3}
+  - {fileID: 8300000, guid: b4741f5e50f85524b80728ea386aa351, type: 3}
+  - {fileID: 8300000, guid: 655bb0f01fbf8ff4d9f0c19e4df806ca, type: 3}
   sfxGroup: {fileID: -5069830022980289509, guid: 24e40d9899cadec41b554af972a20f8a, type: 2}
   audioSource: {fileID: 660046289104656446}
 --- !u!82 &660046289104656446
@@ -153,7 +158,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0

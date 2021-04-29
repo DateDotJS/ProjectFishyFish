@@ -49,8 +49,8 @@ MonoBehaviour:
   muffledCutoff: 780
   tenseMusicSpeed: 1.1
   ambientClip: {fileID: 8300000, guid: c8c681358080fa941a79c29e35f70fec, type: 3}
-  mainMusicClip: {fileID: 8300000, guid: db3cbafb822af654e9f0d4a5facca15b, type: 3}
-  tenseClip: {fileID: 8300000, guid: d78b2187fd1898346b0f0ceba6088fe1, type: 3}
+  mainMusicClip: {fileID: 8300000, guid: f9fedbbedfeecc74fac28eb214b647c3, type: 3}
+  tenseClip: {fileID: 8300000, guid: 5b128c66d3b5c8843af3302b7357b770, type: 3}
   winClip: {fileID: 0}
   loseClip: {fileID: 0}
   mainMixer: {fileID: 24100000, guid: 24e40d9899cadec41b554af972a20f8a, type: 2}

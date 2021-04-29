@@ -59,7 +59,7 @@ public class AudioManager : MonoBehaviour
 
         if (this.DebugPlayOnStart)
         {
-            PlayMainMusic();
+            PlayTenseMusic();
             PlayAmbientAudio();
         }
     }

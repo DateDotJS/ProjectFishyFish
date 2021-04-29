@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class MainPlayer : MonoBehaviour
 {
     private PlayerController playerController;
+    private FishAudio fishAudio;
 
     public List<FishTypeRequirement> consumedFishAmounts;
 
@@ -29,6 +30,7 @@ public class MainPlayer : MonoBehaviour
     private void Awake()
     {
         this.playerController = GetComponent<PlayerController>();
+        this.fishAudio = GetComponent<FishAudio>();
         this.food = GetComponent<Food>();
         this.milestoneDisplay = GameObject
             .FindGameObjectWithTag("MilestoneAnnouncement")
@@ -198,6 +200,7 @@ public class MainPlayer : MonoBehaviour
 
     private void PlayEatingFX()
     {
+        this.fishAudio.PlayEatAudio();
         if (eatingBubbles != null && !eatingBubbles.isPlaying)
             eatingBubbles.Play();
     }
