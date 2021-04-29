@@ -15,7 +15,6 @@ public enum FishType
 
 public class Fish : MonoBehaviour
 {
-    // stamina / recovery (longterm and shortterm)
     public FishType FishType;
     public Food food;
 
@@ -88,11 +87,4 @@ public class Fish : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
             collidedToWall = false;
     }
-
-    // FROM UML DIAGRAM ON DIAGRAM.IO
-    // ability / unique methods here 
-    // use prey ability(s)
-    // use predator ability(s)
-    // use other ability(s) (repro, fun, etc) 
-    // getSurroundings() -> GameObjects
 }

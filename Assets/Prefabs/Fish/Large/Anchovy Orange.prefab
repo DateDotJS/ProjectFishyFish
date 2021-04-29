@@ -30,6 +30,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2b962bd5f4017504a905a4221742c178, type: 2}
+    - target: {fileID: 6301556141006146223, guid: fd363cd9874862447971b6940bd96998, type: 3}
+      propertyPath: FishType
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7287931181813779527, guid: fd363cd9874862447971b6940bd96998, type: 3}
       propertyPath: m_RootOrder
       value: 0

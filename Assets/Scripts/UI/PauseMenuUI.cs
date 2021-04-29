@@ -22,6 +22,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void Pause()
     {
+        Cursor.visible = true;
         this.pauseUI.SetActive(true);
         this.isPaused = true;
         Time.timeScale = 0f;
@@ -29,6 +30,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void Resume()
     {
+        Cursor.visible = false;
         this.pauseUI.SetActive(false);
         this.isPaused = false;
         Time.timeScale = 1f;

@@ -16,7 +16,6 @@ public class FastAvoid : FilteredFlockBehaviour
             //Reset speed to initial one
             if (speedChanged == true)
             {
-                //flock.ChangeFlockSpeed(flock.GetFlockSpeed() / extraSpeed);
                 speedChanged = false;
             }
 
@@ -40,7 +39,6 @@ public class FastAvoid : FilteredFlockBehaviour
         // Increase speed of flock while using fast-avoid behavior
         if (speedChanged == false)
         {
-            //flock.ChangeFlockSpeed(flock.GetFlockSpeed() * extraSpeed);
             speedChanged = true;
         }
         

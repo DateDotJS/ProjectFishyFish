@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour
         particleEmissionSettings = swimmingBubbles.emission;
 
         ceilingCurrentPrefab = Instantiate(ceilingCurrentPrefab, Vector3.zero, ceilingCurrentPrefab.rotation);
+        
+        //Set Cursor to not be visible
+        Cursor.visible = false;
     }
 
     void Update() => UpdateMovement();

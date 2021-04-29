@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinForwardSpeed: 6
-  MaxForwardSpeed: 9
+  MaxForwardSpeed: 11
   maxSideRotation: 0.02
   maxPitchRotation: 0.01
   lookAngleBounds: 85
