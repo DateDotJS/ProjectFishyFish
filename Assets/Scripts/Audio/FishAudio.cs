@@ -9,6 +9,7 @@ public class FishAudio : MonoBehaviour
     [Header("Audio Clips")]
     [SerializeField] private AudioClip[] swimClips;
     [SerializeField] private AudioClip[] dashClips;
+    [SerializeField] private AudioClip[] eatClips;
     
     [Header("Mixer Groups")]
     [SerializeField] private AudioMixerGroup sfxGroup;
@@ -32,5 +33,12 @@ public class FishAudio : MonoBehaviour
         var index = Random.Range(0, this.dashClips.Length);
 
         this.audioSource.PlayOneShot(this.dashClips[index]);
+    }
+    
+    public void PlayEatAudio()
+    {
+        var index = Random.Range(0, this.eatClips.Length);
+
+        this.audioSource.PlayOneShot(this.eatClips[index]);
     }
 }

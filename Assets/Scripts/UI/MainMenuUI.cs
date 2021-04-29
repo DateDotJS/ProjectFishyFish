@@ -8,7 +8,11 @@ public class MainMenuUI : MonoBehaviour
 {
     private void Awake() => Time.timeScale = 1f;
 
-    private void Start() => AudioManager.PlayMainMusic();
+    private void Start()
+    {
+        AudioManager.PlayMainMusic();
+        AudioManager.PlayAmbientAudio();
+    }
 
     public void ExitGame() => Application.Quit();
 }
