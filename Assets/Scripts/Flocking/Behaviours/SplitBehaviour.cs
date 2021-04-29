@@ -17,7 +17,6 @@ public class SplitBehaviour : FilteredFlockBehaviour
             //Reset speed to initial one
             if (speedChanged == true)
             {
-                //flock.ChangeFlockSpeed(flock.GetFlockSpeed() / ExtraSpeed);
                 speedChanged = false;
             }
 
@@ -41,7 +40,6 @@ public class SplitBehaviour : FilteredFlockBehaviour
         
         if (speedChanged == false)
         {
-            //flock.ChangeFlockSpeed(flock.GetFlockSpeed() * ExtraSpeed);
             speedChanged = true;
         }
         

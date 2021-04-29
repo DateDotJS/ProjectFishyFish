@@ -10,6 +10,7 @@ public class MainMenuUI : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
         AudioManager.PlayMainMusic();
         AudioManager.PlayAmbientAudio();
     }

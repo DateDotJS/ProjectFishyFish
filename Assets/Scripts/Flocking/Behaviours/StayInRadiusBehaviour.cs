@@ -23,8 +23,7 @@ public class StayInRadiusBehaviour : FlockBehaviour
         {
             return Vector3.zero;
         }
-
-        //Debug.Log(centerOffset * relativePositionToCenter * relativePositionToCenter);
+        
         return centerOffset * relativePositionToCenter * relativePositionToCenter;
     }
 }

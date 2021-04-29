@@ -26,6 +26,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2184304694937798213, guid: 9c3045fd834cea74bb60676499830526, type: 3}
+      propertyPath: FishType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2396864813679471664, guid: 9c3045fd834cea74bb60676499830526, type: 3}
       propertyPath: m_Name
       value: Anchovy Green
